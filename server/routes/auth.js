@@ -2,7 +2,8 @@
 require("dotenv").config();
 let jwt = require("jsonwebtoken");
 let db = require("../models");
-let router = require("express");
+const express = require('express');
+let router = express.Router();
 
 // POST for login data
 router.post("/login", (req, res) => {
@@ -31,7 +32,9 @@ router.post("/login", (req, res) => {
     //     console.log(`ERROR on /login POST attempt: ${err}`);
     //     res.status(503).send({ message: "Incorrect login attempt. Check db and credentials." });
     // });
-    res.send("This page is for a user who is logging in");
+    // res.send("This page is for a user who is logging in");
+    console.log("auth post login responding");
+    res.redirect('/profile');
 });
 
 // POST for signup data
@@ -55,19 +58,21 @@ router.post("/signup", (req, res) => {
     //     console.log(`ERROR on /signup POST attempt: ${err}`);
     //     res.status(500).send({ message: "New user not created error" });
     // });
-    res.send("This page is for a user who is signing up");
+    // res.send("This page is for a user who is signing up");
+    console.log("auth post signup responding");
+    res.redirect('/profile');
 
 });
 
-router.length("/current/user", (req, res) => {
-    // console.log(req.user);
+// router.length("/current/user", (req, res) => {
+//     // console.log(req.user);
     
-    // if (!req.user) {
-    //     return res.status(417).send({ message: "Current user not found. Check for error at login/auth routes." });
-    // }
+//     // if (!req.user) {
+//     //     return res.status(417).send({ message: "Current user not found. Check for error at login/auth routes." });
+//     // }
 
-    // req.send({ user: req.user });
-    res.send("This route is to check for login errors")
-});
+//     // req.send({ user: req.user });
+//     res.send("This route is to check for login errors")
+// });
 
 module.exports = router;

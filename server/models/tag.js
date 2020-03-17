@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const tagSchema = new mongoose.Schema({
     title: String,
     recipe: {
-        type: mongoose.schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Recipe'
     }
 
