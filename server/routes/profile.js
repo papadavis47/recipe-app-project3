@@ -3,14 +3,16 @@ const router = express.Router();
 // const dd = require("../models/index");
 
 router.get("/", (req, res) => {
-    // db.Profile.find()
-    // .then(profile=>{
-    //     res.send(profile);
-    // }).catch(err=>res.send({ message: "Error in getting your profile", err }));
+    db.Profile.find().populate()
+    .then(profile=>{
+        res.send(profile);
+    }).catch(err=>res.send({ message: "Error in getting your profile", err }));
     
-    res.send("This page will show user's profile");
+    // res.send("This page will show user's profile");
 })
 
+
+// TODO: JOHN
 router.put("/", (req, res) => {
 
     res.send("This page will update a user's profile");

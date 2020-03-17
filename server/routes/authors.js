@@ -2,20 +2,23 @@ const express = require("express");
 const router = express.Router();
 // const dd = require("../models/index");
 
+// NOTE: authors are referred to as Users in the db. 
+// We consider a user to be an author if they have published content.
+
+// get all authors
 router.get("/", (req, res) => {
-    // db.Author.find()
-    // .then(authors=>{
-    //     res.send(authors);
-    // }).catch(err=>res.send({ message: "Error in getting all authors", err }));
+    db.User.find().populate()
+    .then(authors=>{
+        res.send(authors);
+    }).catch(err=>res.send({ message: "Error in getting all authors", err }));
     
-    res.send("This page will show all authors");
+    // res.send("This page will show all authors");
 })
 
+// get a single author
 router.get("/:id", (req, res) => {
-    // db.Author.findById(req.params.id)
-    // .then(author=>res.send(author))
-    // .catch(err=>res.send({message: 'error in getting one author', err}));
-
-    res.send("This page will show one author's profile");
-
-})
+    db.User.findById(req.params.id)
+    .then(user=>res.send(user))
+    .catch(err=>res.send({message: 'Error in getting one author', err}));
+    // res.send("This page will show one author's profile");
+});
