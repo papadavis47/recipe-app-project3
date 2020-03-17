@@ -25,7 +25,7 @@ router.get("/:id", (req, res) => {
 
 })
 
-router.post("/", (req, res) => {
+router.post("/new", (req, res) => {
     // Remove any keys that have no value
     // Object.keys(req.body).forEach((key) => (req.body[key] == '') && delete req.body[key]);
     // db.Recipe.create(req.body)
@@ -35,7 +35,11 @@ router.post("/", (req, res) => {
     res.send("This page will have a form for someone to make a new recipe")
 })
 
-router.put("/:id", (req, res) => {
+router.put("/:id/edit", (req, res) => {
     //needs to be logged in, can only change blog/recipe posted by user??
     res.send("To update a recipe, not sure how this will be possible with the models of mongoose");
 })
+
+router.delete
+
+module.exports = router;

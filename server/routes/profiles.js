@@ -11,8 +11,10 @@ router.get("/", (req, res) => {
     res.send("This page will show user's profile");
 })
 
-router.put("/", (req, res) => {
+router.put("/edit", (req, res) => {
 
     res.send("This page will update a user's profile");
 
 })
+
+module.exports = router;
