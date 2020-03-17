@@ -2,27 +2,13 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs')
 
-const authorSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        minlength: 1,
-        maxlength: 99
-    },
-    image: 
-    
-    
-    lastName: String,
-    email: String,
-})
-
-// The following is a cut and copy from auth
-
 
 let userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
     minlength: 1
+    maxlength: 99,
   },
   email: {
     type: String,
