@@ -8,7 +8,11 @@ let userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 1,
+<<<<<<< HEAD
     maxlength: 99
+=======
+    maxlength: 99,
+>>>>>>> 4aa82b82527ccb6c3ed3adaa2a6b5eeaf8f6e86f
   },
   email: {
     type: String,
