@@ -21,7 +21,15 @@ let userSchema = new mongoose.Schema({
     required: true,
     minlength: 8,
     maxlength: 100
-  }
+  },
+  userRecipe: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Recipe'
+  }],
+  favRecipe: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Recipe'
+  }]
 })
 
 // Use bcrypt to hash password
