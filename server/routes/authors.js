@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-// const dd = require("../models/index");
+const db = require("../models/index");
 
 // NOTE: authors are referred to as Users in the db. 
 // We consider a user to be an author if they have published content.
@@ -22,4 +22,5 @@ router.get("/:id", (req, res) => {
     .catch(err=>res.send({message: 'Error in getting one author', err}));
     // res.send("This page will show one author's profile");
 });
+
 module.exports = router;
