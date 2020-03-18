@@ -17,8 +17,20 @@ router.get("/", (req, res) => {
 
 // get a single author
 router.get("/:id", (req, res) => {
+<<<<<<< HEAD
     db.User.findById(req.params.id)
     .then(user=>res.send(user))
     .catch(err=>res.send({message: 'Error in getting one author', err}));
     // res.send("This page will show one author's profile");
 });
+=======
+    // db.Author.findById(req.params.id)
+    // .then(author=>res.send(author))
+    // .catch(err=>res.send({message: 'error in getting one author', err}));
+
+    res.send("This page will show one author's profile");
+
+})
+
+module.exports = router;
+>>>>>>> micajank-master
