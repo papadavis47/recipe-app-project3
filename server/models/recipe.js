@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 
 const recipeSchema = new mongoose.Schema({
     title: String,
+    alt: String,
     authorId: {
-        type: mongoose.schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Author'
     },
     image: String,
@@ -20,7 +21,10 @@ const recipeSchema = new mongoose.Schema({
         type: Date, 
         default: Date.now 
     },
-    tags: [tagSchema]
+    tags: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tag'
+    }]
 })
 
 
