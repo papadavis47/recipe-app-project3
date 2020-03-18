@@ -22,3 +22,4 @@ router.get("/:id", (req, res) => {
     .catch(err=>res.send({message: 'Error in getting one author', err}));
     // res.send("This page will show one author's profile");
 });
+module.exports = router;
