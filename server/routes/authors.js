@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-// const db = require("../models/index");
+const db = require("../models/index");
 
 // NOTE: authors are referred to as Users in the db. 
 // We consider a user to be an author if they have published content.
