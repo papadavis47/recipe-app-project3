@@ -2,14 +2,15 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models/index");
 
-router.get("/", (req, res) => {
-    db.Profile.find().populate()
-    .then(profile=>{
-        res.send(profile);
-    }).catch(err=>res.send({ message: "Error in getting your profile", err }));
+// This route only needed in front end
+// router.get("/", (req, res) => {
+//     db.user.find().populate()
+//     .then(profile=>{
+//         res.send(profile);
+//     }).catch(err=>res.send({ message: "Error in getting your profile", err }));
     
-    // res.send("This page will show user's profile");
-})
+//     // res.send("This page will show user's profile");
+// })
 
 router.put("/edit", (req, res) => {
 

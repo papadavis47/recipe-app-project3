@@ -14,6 +14,7 @@ app.use(cors());
 app.use('/recipes', require('./routes/recipes'));
 app.use('/authors', require('./routes/authors'));
 app.use('/profile', require('./routes/profile'));
+app.use('/auth', require('./routes/auth'));
 
 // Make 404 route
 app.get('/', (req, res) => {

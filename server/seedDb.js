@@ -1,10 +1,11 @@
 const db = require('./models');
 
 db.Recipe.create({
-  title: 'Spaghetti Carbonara',
+  title: 'Spaghetti Carbonara 2',
   servings: 6,
   description: 'An Italian Classic',
-  image: 'http://placekitten.com/200/300'
+  image: 'http://placekitten.com/200/300',
+  ingredients: ['meatballs', 'sauce', 'pasta']
 })
 .then(result => {
   console.log('Created the First part');
@@ -22,3 +23,4 @@ db.Recipe.create({
 .catch(err => {
   console.log('Error Message', err);
 });
+
