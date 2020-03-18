@@ -19,3 +19,5 @@ router.get("/:id", (req, res) => {
     res.send("This page will show one author's profile");
 
 })
+
+module.exports = router;
