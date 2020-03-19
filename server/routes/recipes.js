@@ -29,10 +29,15 @@ router.post("/", (req, res) => {
 })
 
 router.put("/:id", (req, res) => {
-    //needs to be logged in, can only change blog/recipe posted by user??
-    res.send("To update a recipe, not sure how this will be possible with the models of mongoose");
+    db.Recipe.findByIdAndUpdate(req.params.id)
+    // res.send("To update a recipe, not sure how this will be possible with the models of mongoose");
 })
 
+router.delete('/:id', (req, res) => {
+    db.Recipe.findByIdAndDelete(req.params.id)
+    .then(recipe => res.redirect('/'))
+    .catch(err=> res.send({ message: 'error in deleting item', err}));
+})
 
 
 module.exports = router;

@@ -10,13 +10,14 @@ const db = require("../models/index");
 //     }).catch(err=>res.send({ message: "Error in getting your profile", err }));
 
 // res.send("This page will show user's profile");
-})
+
 
 
 // TODO: JOHN
 router.put("/", (req, res) => {
+db.User.findByIdAndUpdate(req.params.id, req.body)
 
-    res.send("This page will update a user's profile");
+// res.send("This page will update a user's profile");
 
 })
 
