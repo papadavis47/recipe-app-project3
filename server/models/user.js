@@ -44,7 +44,7 @@ userSchema.set('toJSON', {
 })
 
 // Create a helper function to compare the password hashes
-userSchema.methods.isValidPassword = function (typedPassword) {
+userSchema.methods.isAuthenticated = function (typedPassword) {
   return bcrypt.compareSync(typedPassword, this.password)
 }
 

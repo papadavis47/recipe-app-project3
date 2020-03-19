@@ -5,7 +5,7 @@ import jwtDecode from 'jwt-decode';
 import Header from './wrappers/Header';
 import Content from './content/Content';
 
-function App() {
+const App = function() {
   let [user, setUser] = useState(null);
 
   useEffect(()=> {
