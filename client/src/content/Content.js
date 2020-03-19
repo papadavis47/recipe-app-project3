@@ -20,17 +20,17 @@ export default function Content(props) {
     // todo: add all routes
     return (
         <div className="App-content">
-            {/* <Route exact path="/" component={Home} /> */}
+            {/* <Route exact path="/" component={Home} />
             <Route path="/recipes/new" component={NewRecipe} />
-            {/* <Route path="/recipes/:id/edit" component={EditRecipe} /> */}
+            <Route path="/recipes/:id/edit" component={EditRecipe} />
             <Route path="/recipes/:id" component={ShowRecipe} />
-            <Route path="/recipes" component={Recipes} />
-            {/* <Route path="/profile/edit" component={EditProfile} /> */}
-            {/* <Route path="/profile" component={Profile} /> */}
-            {/* <Route path="/authors/:id" component={ShowAuthor} /> */}
-            <Route path="/authors" component={Authors} />
-            {/* <Route path="/auth/login" component={Login} /> */}
-            {/* <Route path="/auth/signup" component={Signup} /> */}
+            <Route path="/recipes" component={Recipes} /> */}
+            <Route path="/profile/edit" render={() => <EditProfile user={props.user} />} />
+            <Route path="/profile" render={() => <Profile user={props.user} />} />
+            {/* <Route path="/authors/:id" component={ShowAuthor} />
+            <Route path="/authors" component={Authors} /> */}
+            <Route path="/auth/login" render={() => <Login user={props.user} updateUser={props.updateUser} /> } />
+            <Route path="/auth/signup" render={() => <Signup user={props.user} updateUser={props.updateUser} /> } />
         </div>
     )
 
