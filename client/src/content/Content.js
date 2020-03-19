@@ -4,7 +4,9 @@ import { Route } from 'react-router-dom';
 // import all the pages
 // import Home from './pages/Home';
 import NewRecipe from './pages/recipes/NewRecipe';
-// import EditRecipe from './pages/recipes/EditRecipe';
+
+import EditRecipe from './pages/recipes/EditRecipe.js';
+
 import ShowRecipe from './pages/recipes/ShowRecipe';
 import Recipes from './pages/recipes/Recipes';
 // import EditProfile from './pages/profile/EditProfile';
