@@ -37,9 +37,12 @@ router.post("/", (req, res) => {
     .catch(err=>res.send({ message: 'Error in creating one recipe', err}));
 })
 
+// we will need to decide which part of the recipe schema to update - title, ingredients, etc
+// will be similar to process of how recipe ingredients are created - however that is sent back
+
 router.put("/:id", (req, res) => {
-    db.Recipe.findByIdAndUpdate(req.params.id)
-    // res.send("To update a recipe, not sure how this will be possible with the models of mongoose");
+    db.Recipe.findByIdAndUpdate(req.params.id, {title: req.body.title})
+    .then(recipe => res.send( recipe ))
 })
 
 router.delete('/:id', (req, res) => {
