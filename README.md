@@ -3,7 +3,7 @@
 
 # recipe-app-project3
 
-Micro blogging app for recipes.
+Micro Blogging MERN Application for Recipes
 
 ------------------------------
 
@@ -43,7 +43,9 @@ Continued coding routes and structure for MongoDB schemas. Began testing routes 
 
 Began working on client side routes in React. 
 
-## 7th Day - Thursday 
+## 7th Day - Thursday
+
+Completed authentication files. Continued work on React functionality. More testing of React routes.
 
 
 ## STRETCH GOALS
@@ -51,3 +53,7 @@ Began working on client side routes in React.
 * Allow users to add comments to recipes
 * Use cloudinary API - allow users to upload profile photos, recipe photos
 * Use twitter API/ OAuth - allow users to post recipe descriptions to twitter
+
+## AKNOWLEDGEMENTS
+
+
