@@ -6,35 +6,32 @@ export default function EditProfile(props) {
     let [name, setName] = useState('')
     let [email, setEmail] = useState('')
     let [password, setPassword] = useState('')
-    let [imageURL, setImageURL] = useState('')
+    let [image, setImage] = useState('')
     let [bio, setBio] = useState('');
     let [message, setMessage] = useState('')
     
     
     useEffect(()=> {
-        setEmail(props.user? 'props.user.email': '');
-        setName(props.user? 'props.user.name': '');
-        setPassword(props.user? 'props.user.password': '');
-        setImageURL(props.user? 'props.user.imageURL': '');
-        setBio(props.user? 'props.user.bio': '');
         setMessage("");
-    }, [name, email, password, imageURL, bio])
+    }, [name, email, password, image, bio])
     
     // redirect users who aren't logged in
     if (!props.user) {
         return <Redirect to='/' />
     }
-
+    
     const handleSubmit = e => {
+        // console.log("🦕 here be your changes:", name, email, password, image, bio)
+        // console.log("heres what you had before:", props.user.email, props.user.name, props.user.image, props.user.bio)
         e.preventDefault()
-        // TODO: Send the user sign up data to the server
-        fetch(`${process.env.REACT_APP_SERVER_URL}/auth/signup`, {
+        // TODO: Send the user's edited data to the server
+        fetch(`${process.env.REACT_APP_SERVER_URL}/profile/edit`, {
             method: 'POST',
             body: JSON.stringify({
                 name,
                 email,
                 password,
-                imageURL,
+                image,
                 bio
             }),
             headers: {
@@ -56,7 +53,7 @@ export default function EditProfile(props) {
 
     return (
         <div>
-            <h2>Signup</h2>
+            <h2>Edit Profile</h2>
             <span className="red">{message}</span>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -73,13 +70,13 @@ export default function EditProfile(props) {
                 </div>
                 <div>
                     <label>Profile Pic URL:</label>
-                    <input type="url" name="imageURL" placeholder={props.user.imageURL} onChange={e => setImageURL(e.target.value)} />
+                    <input type="url" name="image" placeholder={props.user.image} onChange={e => setImage(e.target.value)} />
                 </div>
                 <div>
                     <label>Bio:</label>
                     <input type="text" name="bio" placeholder={props.user.bio} onChange={e => setBio(e.target.value)} />
                 </div>
-                <button type="submit">Sign Me Up!</button>
+                <button type="submit">Update</button>
             </form>
       </div>
     )

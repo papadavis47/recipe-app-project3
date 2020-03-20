@@ -8,16 +8,15 @@ export default function Signup(props) {
   let [email, setEmail] = useState('')
   let [name, setName] = useState('')
   let [password, setPassword] = useState('')
-  let [imageURL, setImageURL] = useState('')
+  let [image, setImage] = useState('')
   let [bio, setBio] = useState('');
 
 
   useEffect(()=> {
     setMessage("");
-  }, [name, email, password, imageURL, bio])
+  }, [name, email, password, image, bio])
 
   const handleSubmit = e => {
-    console.log("🦖", process.env.REACT_APP_SERVER_URL)
     e.preventDefault()
     // TODO: Send the user sign up data to the server
     fetch(`${process.env.REACT_APP_SERVER_URL}/auth/signup`, {
@@ -26,7 +25,7 @@ export default function Signup(props) {
         name,
         email,
         password,
-        imageURL,
+        image,
         bio
       }),
       headers: {
@@ -68,7 +67,7 @@ export default function Signup(props) {
         </div>
         <div>
           <label>Profile Pic URL:</label>
-          <input type="url" name="imageURL" onChange={e => setImageURL(e.target.value)} />
+          <input type="url" name="image" onChange={e => setImage(e.target.value)} />
         </div>
         <div>
           <label>Bio:</label>

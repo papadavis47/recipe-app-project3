@@ -7,14 +7,14 @@ import NewRecipe from './pages/recipes/NewRecipe';
 
 import EditRecipe from './pages/recipes/EditRecipe.js';
 
-import ShowRecipe from './pages/recipes/ShowRecipe';
-import Recipes from './pages/recipes/Recipes';
-// import EditProfile from './pages/profile/EditProfile';
-// import Profile from './pages/profile/Profile';
-import Authors from './pages/authors/Authors';
-// import ShowAuthor from './pages/authors/ShowAuthor';
-// import Login from './pages/auth/Login';
-// import Signup from './pages/auth/Signup';
+// import ShowRecipe from './pages/recipes/ShowRecipe';
+// import Recipes from './pages/recipes/Recipes';
+import EditProfile from './pages/profile/EditProfile';
+import Profile from './pages/profile/Profile';
+// import Authors from './pages/authors/Authors';
+import ShowAuthor from './pages/authors/ShowAuthor';
+import Login from './pages/auth/Login';
+import Signup from './pages/auth/Signup';
 
 export default function Content(props) {
     // todo: add all routes
