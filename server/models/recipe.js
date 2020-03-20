@@ -21,10 +21,7 @@ const recipeSchema = new mongoose.Schema({
         type: Date, 
         default: Date.now 
     },
-    tags: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Tag'
-    }]
+    tags: [{ type: String }]
 })
 
 

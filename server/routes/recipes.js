@@ -3,11 +3,17 @@ const router = express.Router();
 const db = require("../models/index");
 
 router.get("/", (req, res) => {
-    db.Recipe.find().populate()
-    .then(recipes=>{
-        res.send(recipes);
+    let searchParams = req.query.tags ? 
+    { tags: { $all: req.query.tags.split(',').map(tag=>tag.toLowerCase().trim()) } } : 
+    {} 
+
+    console.log( searchParams )
+    db.Recipe.find( searchParams )
+    .then(recipes => {
+        console.log(recipes)
+        res.send(recipes)
     }).catch(err=>res.send({ message: "Error in getting all recipes", err }));
-})
+});
 
 router.get("/about", (req, res) => {
     
@@ -23,6 +29,9 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
     // Remove any keys that have no value
     Object.keys(req.body).forEach((key) => (req.body[key] == '') && delete req.body[key]);
+    req.body.tags = req.body.tags.split(',').map(tag=>tag.toLowerCase().trim());
+    req.body.directions = req.body.directions.split(',').map(direction=>direction.trim());
+    req.body.ingredients = req.body.ingredients.split(',').map(ingredient=>ingredient.toLowerCase().trim());
     db.Recipe.create(req.body)
     .then(recipe => res.send(recipe))
     .catch(err=>res.send({ message: 'Error in creating one recipe', err}));
