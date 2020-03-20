@@ -22,6 +22,12 @@ let userSchema = new mongoose.Schema({
     minlength: 8,
     maxlength: 100
   },
+  image: {
+    type: String
+  },
+  bio: {
+    type: String
+  },
   userRecipe: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Recipe'
