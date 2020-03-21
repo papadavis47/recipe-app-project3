@@ -28,11 +28,11 @@ let userSchema = new mongoose.Schema({
   bio: {
     type: String
   },
-  userRecipe: [{
+  userRecipes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Recipe'
   }],
-  favRecipe: [{
+  favRecipes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Recipe'
   }]

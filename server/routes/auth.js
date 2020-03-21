@@ -8,7 +8,7 @@ let router = express.Router();
 // POST for login data
 router.post("/login", (req, res) => {
     // find my user by their email
-    db.User.findOne({ email: req.body.email })
+    db.User.findOne({ email: req.body.email }).populate("userRecipes").populate("favRecipes")
     .then( user => {
         // check that user or password exists in db
         if (!user || !user.password) {
@@ -37,7 +37,7 @@ router.post("/login", (req, res) => {
 
 // POST for signup data
 router.post("/signup", (req, res) => {
-    db.User.findOne({ email: req.body.email })
+    db.User.findOne({ email: req.body.email }).populate("userRecipes").populate("favRecipes")
     .then(user => {
         // if my user exists already
         if (user) {
