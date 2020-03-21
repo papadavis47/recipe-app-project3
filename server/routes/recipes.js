@@ -41,8 +41,21 @@ router.post("/", (req, res) => {
 // will be similar to process of how recipe ingredients are created - however that is sent back
 
 router.put("/:id", (req, res) => {
-    db.Recipe.findByIdAndUpdate(req.params.id, {title: req.body.title})
-    .then(recipe => res.send( recipe ))
+    req.body.servings = parseInt(req.body.servings)
+    req.body.tags = req.body.tags.split(',').map(tag=>tag.toLowerCase().trim());
+    req.body.directions = req.body.directions.split(',').map(direction=>direction.trim());
+    req.body.ingredients = req.body.ingredients.split(',').map(ingredient=>ingredient.toLowerCase().trim());
+    db.Recipe.findByIdAndUpdate(req.params.id, {
+        title: req.body.title,
+        alt: req.body.alt,
+        image: req.body.image,
+        servings: req.body.servings,
+        description: req.body.description,
+        directions: req.body.directions,
+        ingredients: req.body.ingredients,
+        tags: req.body.tags
+    }, (err, recipe) => res.send( recipe ))
+    // .then(recipe => )
 })
 
 router.delete('/:id', (req, res) => {
