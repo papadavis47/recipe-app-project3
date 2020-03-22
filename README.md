@@ -1,9 +1,10 @@
 ![General Assembly / Project 3](https://img.shields.io/badge/General%20Assembly-Project%203-blue)
 ![Recipes / React](https://img.shields.io/badge/Recipes-React-%231e90ff)
+![Contributors](https://img.shields.io/badge/Dean%2C%20Mac%2C%20John-SEI%2029%20--%20Seattle-blue)
 
 # recipe-app-project3
 
-Micro blogging app for recipes.
+Micro Blogging MERN Application for Recipes
 
 ------------------------------
 
@@ -15,6 +16,8 @@ Group Project for SEI 29 Seattle Unit 3
 * “As a user, I want to find recipes that are easy to navigate to make cooking a less stressful experience and grow my culinary skills.”
 
 *  “As a content creator, I want a place to post recipes where my readers can trust that my content will be accessible.”
+
+## Installation Instructions
 
 # Project Evolution
 
@@ -43,7 +46,15 @@ Continued coding routes and structure for MongoDB schemas. Began testing routes 
 
 Began working on client side routes in React. 
 
-## 7th Day - Thursday 
+## 7th Day - Thursday
+
+Completed authentication files. Continued work on React functionality. More testing of React routes on client side.
+
+## 8th Day - Friday
+
+Continued work on React components. 
+
+## Unsolved Problems / Major Hurdles
 
 
 ## STRETCH GOALS
@@ -51,3 +62,7 @@ Began working on client side routes in React.
 * Allow users to add comments to recipes
 * Use cloudinary API - allow users to upload profile photos, recipe photos
 * Use twitter API/ OAuth - allow users to post recipe descriptions to twitter
+
+## AKNOWLEDGEMENTS
+
+

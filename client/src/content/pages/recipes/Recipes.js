@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import axios from "axios";
+import ShowRecipe from "./ShowRecipe";
 
-export default function Recipe(props) {
+
+export default function Recipes(props) {
     // make 'recipes' state
-    const [recipes, setRecipes] = useState([]);
+    const [topTwenty, setTopTwenty] = useState([]);
     const [error, setError] = useState(null);
 
     // call to db to get all recipes
@@ -15,7 +17,7 @@ export default function Recipe(props) {
                 setError(response.data.message);
                 console.log(response.data.err);
             } else {
-                setRecipes(response.data);
+                setTopTwenty(response.data);
             }
         }).catch(err => {
             setError(err.message);
@@ -23,29 +25,33 @@ export default function Recipe(props) {
         });
     }, []);
 
-    let recipeLinkList = recipes.length < 1 ?
-    <h3>No recipes left! Try another search?</h3> :
-    recipes.map((recipe, i) => (
-        <div key={`recipeListItem-${i}`}>
-            <h4><Link to={`/recipe/${recipe._id}`}>{recipe.title}</Link></h4>
+   
+    // need to pass user and update user to hold recipeId
+    let searchedRecipesLinkList = props.searchedRecipes.length < 1 ?
+    <h3>No more recipes. Try another search?</h3> :
+    props.searchedRecipes.map((searchedRecipe, j) => (
+        <div key={`recipeListItem-${j}`}>
+            {/* <h4><Route path={`/recipes/${searchedRecipe._id}`} render={()=> <ShowRecipe />}>{searchedRecipe.title}</Route></h4> */}
+            <h4><Link to={`/recipes/${searchedRecipe._id}`}>{searchedRecipe.title}</Link></h4>
         </div>
-    ))
+    ));
+
+    let topTwentyLinkList = topTwenty.length < 1 ?
+    <h3>No more recipes. You can add your own recipe below!</h3> :
+    topTwenty.map((topTwenty, i) => (
+        <div key={`recipeListItem-${i}`}>
+            <h4><Link to={`/recipes/${topTwenty._id}`}>{topTwenty.title}</Link></h4>
+        </div>
+    ));
+
+    let outputList = props.searchedRecipes.length > 0 ? searchedRecipesLinkList : topTwentyLinkList;
 
     return (
         <div>
           <h1>RECIPES STUB</h1>
-          <Link to="/recipes/add">Add a recipe</Link>
-          {recipeLinkList}
+          <Link to="/recipes/new">Add a recipe</Link>
+          {outputList}
         </div>
       )
 
 };
-
-//states: an array of top recipes, called in app or recipes when the component loads.
-//second: an array of searched recipes
-// information will probably live in app so it can go to recipes
-// recipes currently on dispay, then recipes searched
-
-// in app have an array of searched recipes, pass down the function(defined in state) that searches for recipes, calls backend, receives infor and then update state. pass to search which will call that function (as props)
-
-//look up mongoose querying for multiple peramaters in one field

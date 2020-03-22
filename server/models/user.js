@@ -35,6 +35,7 @@ let userSchema = new mongoose.Schema({
   favRecipes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Recipe'
+    //one more component thats a form add favorite, sent user and recipe id
   }]
 })
 
