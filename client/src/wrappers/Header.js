@@ -8,7 +8,7 @@ export default function Header(props) {
         <header className="App-header">
             <Link to="/" className="App-link"><h1>No BS Recipes</h1></Link>
             <Nav updateUser={props.updateUser} user={props.user} />
-            <Search />
+            <Search setSearchedRecipes={props.setSearchedRecipes} searchedRecipes={props.searchedRecipes} />
         </header>
     )
 }

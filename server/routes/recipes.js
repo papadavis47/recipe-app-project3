@@ -7,10 +7,10 @@ router.get("/", (req, res) => {
     { tags: { $all: req.query.tags.split(',').map(tag=>tag.toLowerCase().trim()) } } : 
     {} 
 
-    console.log( searchParams )
+    //console.log( searchParams )
     db.Recipe.find( searchParams )
     .then(recipes => {
-        console.log(recipes)
+        //console.log(recipes)
         res.send(recipes)
     }).catch(err=>res.send({ message: "Error in getting all recipes", err }));
 });
@@ -32,6 +32,7 @@ router.post("/", (req, res) => {
     req.body.tags = req.body.tags.split(',').map(tag=>tag.toLowerCase().trim());
     req.body.directions = req.body.directions.split(',').map(direction=>direction.trim());
     req.body.ingredients = req.body.ingredients.split(',').map(ingredient=>ingredient.toLowerCase().trim());
+    //need to pass user to new recipes (here or front end???)
     db.Recipe.create(req.body)
     .then(recipe => res.send(recipe))
     .catch(err=>res.send({ message: 'Error in creating one recipe', err}));
