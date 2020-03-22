@@ -13,7 +13,7 @@ app.use(cors());
 // Declare controllers
 app.use('/recipes', require('./routes/recipes'));
 app.use('/authors', require('./routes/authors'));
-app.use('/profiles', require('./routes/profile'));
+app.use('/profile', require('./routes/profile'));
 app.use('/auth', require('./routes/auth'));
 
 
