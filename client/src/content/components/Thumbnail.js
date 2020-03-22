@@ -35,7 +35,7 @@ export default function Thumbnail(props) {
         <div>
             <img src={props.recipe.image} alt={props.recipe.alt} />
             <h3>
-                <Link to={`/recipe/${props.recipe._id}`}>{props.recipe.title}</Link>
+                <Link to={`/recipes/${props.recipe._id}`}>{props.recipe.title}</Link>
             </h3>
             <h4>
                 {authorLink}
