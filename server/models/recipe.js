@@ -2,8 +2,14 @@
 const mongoose = require('mongoose');
 
 const recipeSchema = new mongoose.Schema({
-    title: String,
-    alt: String,
+    title: {
+        type: String,
+        required: true
+    },
+    alt:  {
+        type: String,
+        required: true
+    },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -11,12 +17,19 @@ const recipeSchema = new mongoose.Schema({
     image: String,
     servings: Number,
     description: {
+        required: true,
         type: String,
         minlength: 1,
         maxlength: 280
     },
-    directions: [{ type: String }],
-    ingredients: [{ type: String}],
+    directions: { 
+        required: true,
+        type: [String]
+    },
+    ingredients: { 
+        required: true,
+        type: [String]
+    },
     date: { 
         type: Date, 
         default: Date.now 

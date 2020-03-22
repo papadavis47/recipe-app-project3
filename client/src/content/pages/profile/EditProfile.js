@@ -3,11 +3,11 @@ import { Redirect } from 'react-router-dom';
 
 export default function EditProfile(props) {
     // Declare and initialize state variables
-    let [name, setName] = useState('')
-    let [email, setEmail] = useState('')
-    let [password, setPassword] = useState('')
-    let [image, setImage] = useState('')
-    let [bio, setBio] = useState('');
+    let [name, setName] = useState(props.user.name)
+    let [email, setEmail] = useState(props.user.email)
+    let [password, setPassword] = useState(props.user.password)
+    let [image, setImage] = useState(props.user.image)
+    let [bio, setBio] = useState(props.user.bio);
     let [message, setMessage] = useState('')
     
     
@@ -21,8 +21,8 @@ export default function EditProfile(props) {
     }
     
     const handleSubmit = e => {
-        // console.log("🦕 here be your changes:", name, email, password, image, bio)
-        // console.log("heres what you had before:", props.user.email, props.user.name, props.user.image, props.user.bio)
+        console.log("🦕 here be your changes:", name, email, password, image, bio)
+        console.log("heres what you had before:", props.user.email, props.user.name, props.user.image, props.user.bio)
         e.preventDefault()
         // TODO: Send the user's edited data to the server
         fetch(`${process.env.REACT_APP_SERVER_URL}/profile/edit`, {
@@ -58,23 +58,33 @@ export default function EditProfile(props) {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Name:</label>
-                    <input type="text" name="name" placeholder={props.user.name} onChange={e => setName(e.target.value)} />
+                    <input type="text" name="name" placeholder={props.user.name} 
+                        onChange={e => setName(e.target.value)} 
+                    />
                 </div>
                 <div>
                     <label>Email:</label>
-                    <input type="email" name="email" placeholder={props.user.email} onChange={e => setEmail(e.target.value)} />
+                    <input type="email" name="email" placeholder={props.user.email} 
+                        onChange={e => setEmail(e.target.value)} 
+                    />
                 </div>
                 <div>
                     <label>Password:</label>
-                    <input type="password" name="password" placeholder={props.user.password} onChange={e => setPassword(e.target.value)} />
+                    <input type="password" name="password" placeholder={props.user.password} 
+                        onChange={e => setPassword(e.target.value)} 
+                    />
                 </div>
                 <div>
                     <label>Profile Pic URL:</label>
-                    <input type="url" name="image" placeholder={props.user.image} onChange={e => setImage(e.target.value)} />
+                    <input type="url" name="image" placeholder={props.user.image} 
+                        onChange={e => setImage(e.target.value)} 
+                    />
                 </div>
                 <div>
                     <label>Bio:</label>
-                    <input type="text" name="bio" placeholder={props.user.bio} onChange={e => setBio(e.target.value)} />
+                    <input type="text" name="bio" placeholder={props.user.bio} 
+                        onChange={e => setBio(e.target.value)} 
+                    />
                 </div>
                 <button type="submit">Update</button>
             </form>
