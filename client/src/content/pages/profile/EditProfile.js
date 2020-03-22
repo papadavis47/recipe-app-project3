@@ -25,7 +25,7 @@ export default function EditProfile(props) {
         // console.log("heres what you had before:", props.user.email, props.user.name, props.user.image, props.user.bio)
         e.preventDefault()
         // TODO: Send the user's edited data to the server
-        fetch(`${process.env.REACT_APP_SERVER_URL}/profile/edit`, {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/profile/edit/${props.user_id}`, {
             method: 'POST',
             body: JSON.stringify({
                 name,
