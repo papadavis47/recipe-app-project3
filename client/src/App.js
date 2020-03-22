@@ -1,5 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
@@ -9,6 +10,7 @@ import Content from './content/Content';
 
 const App = function() {
   let [user, setUser] = useState(null);
+  let [searchedRecipes, setSearchedRecipes] = useState([]);
 
   useEffect(()=> {
     decodeToken();
@@ -37,13 +39,14 @@ const App = function() {
       setUser(null);
     }
   }
+  
 
   return (
     <Router>
       <div className="App">
-        <Header updateUser={updateUser} user={user} />
+        <Header searchedRecipes={searchedRecipes} setSearchedRecipes={setSearchedRecipes} updateUser={updateUser} user={user} />
         <main>
-          <Content updateUser={updateUser} user={user} />
+          <Content searchedRecipes={searchedRecipes} updateUser={updateUser} user={user} />
         </main>
       </div>
     </Router>
