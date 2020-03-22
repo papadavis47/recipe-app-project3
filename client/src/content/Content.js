@@ -24,7 +24,7 @@ export default function Content(props) {
             <Route path="/recipes" component={Recipes} /> */}
             <Route path="/profile/edit" render={() => <EditProfile user={props.user} />} />
             <Route path="/profile" render={() => <Profile user={props.user} />} />
-            <Route path="/authors" component={Authors} />
+            <Route path="/authors" render={() => <Authors user={props.user} />} />
             <Route path="/authors/:id" component={ShowAuthor} />
             <Route path="/auth/login" render={() => <Login user={props.user} updateUser={props.updateUser} /> } />
             <Route path="/auth/signup" render={() => <Signup user={props.user} updateUser={props.updateUser} /> } />

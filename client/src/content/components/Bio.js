@@ -5,7 +5,7 @@ export default function Bio(props) {
 
     return (
          <div>
-            <h2>{props.name}</h2>
+            <h2>{props.name? props.name: ""}</h2>
             <div>
                 <img src={props.image? props.image : "./img/profile-placeholder.jpg"} />
             </div>

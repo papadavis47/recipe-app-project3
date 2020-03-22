@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default function Nav(props) {
     const handleLogout = e => {
@@ -8,6 +8,7 @@ export default function Nav(props) {
         localStorage.removeItem('mernToken')
         // TODO: Update the state of the App
         props.updateUser();
+        return(<Redirect to="/auth/login" />)
     }
     // links that show when user is not logged in
     let links = (

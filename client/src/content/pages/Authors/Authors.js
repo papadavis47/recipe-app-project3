@@ -17,7 +17,6 @@ export default function Authors(props) {
                 setAuthors(response.data.filter(author => {
                     return author.userRecipes.length > 0;
                 }));
-                console.log("🐋My bois:", authors)
             }
         }).catch(err => {
             setError(err);
@@ -30,6 +29,7 @@ export default function Authors(props) {
                 image={author.image} 
                 numRecipes={author.userRecipes.length}
                 id={author._id}
+                user={props.user}
             />
     });
 

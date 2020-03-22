@@ -7,7 +7,7 @@ const db = require("../models/index");
 
 // get all authors
 router.get("/", (req, res) => {
-    db.User.find().populate()
+    db.User.find().populate("userRecipes").populate("favRecipes")
     .then(authors=>{
         res.send(authors);
     }).catch(err=>res.send({ message: "Error in getting all authors", err }));
@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 
 // get a single author
 router.get("/:id", (req, res) => {
-    db.User.findById(req.params.id)
+    db.User.findById(req.params.id).populate("userRecipes").populate("favRecipes")
     .then(user=>res.send(user))
     .catch(err=>res.send({message: 'Error in getting one author', err}));
     // res.send("This page will show one author's profile");
