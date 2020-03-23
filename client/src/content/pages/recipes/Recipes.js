@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Route } from "react-router-dom";
 import axios from "axios";
 import ShowRecipe from "./ShowRecipe";
+import Thumbnail from "../../components/Thumbnail";
 
 
 export default function Recipes(props) {
@@ -27,12 +28,13 @@ export default function Recipes(props) {
 
    
     // need to pass user and update user to hold recipeId
-    let searchedRecipesLinkList = props.searchedRecipes.length < 1 ?
+    let searchedRecipesLinkList = !props.searchedRecipes ?
     <h3>No more recipes. Try another search?</h3> :
     props.searchedRecipes.map((searchedRecipe, j) => (
         <div key={`recipeListItem-${j}`}>
             {/* <h4><Route path={`/recipes/${searchedRecipe._id}`} render={()=> <ShowRecipe />}>{searchedRecipe.title}</Route></h4> */}
-            <h4><Link to={`/recipes/${searchedRecipe._id}`}>{searchedRecipe.title}</Link></h4>
+            {/* <h4><Link to={`/recipes/${searchedRecipe._id}`}>{searchedRecipe.title}</Link></h4> */}
+            <Thumbnail recipe={searchedRecipe} />
         </div>
     ));
 
@@ -40,11 +42,14 @@ export default function Recipes(props) {
     <h3>No more recipes. You can add your own recipe below!</h3> :
     topTwenty.map((topTwenty, i) => (
         <div key={`recipeListItem-${i}`}>
-            <h4><Link to={`/recipes/${topTwenty._id}`}>{topTwenty.title}</Link></h4>
+            {/* <h4><Link to={`/recipes/${topTwenty._id}`}>{topTwenty.title}</Link></h4> */}
+            <Thumbnail recipe={topTwenty} />
+
+
         </div>
     ));
 
-    let outputList = props.searchedRecipes.length > 0 ? searchedRecipesLinkList : topTwentyLinkList;
+    let outputList = props.searchedRecipes ? searchedRecipesLinkList : topTwentyLinkList;
 
     return (
         <div>

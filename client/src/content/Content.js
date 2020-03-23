@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // import all the pages
 import NewRecipe from './pages/recipes/NewRecipe';
@@ -20,11 +20,12 @@ export default function Content(props) {
 
     return (
         <div className="App-content">
-            {/* <Route exact path="/" component={Recipes} />
+            <Switch>
+            <Route exact path="/" component={Recipes} />
 
-            <Route path="/recipes/new" component={NewRecipe} />
-            {/* <Route path="/recipes/:id/edit" component={EditRecipe} /> */}
-            <Route path="/recipes/:id" component={ShowRecipe} />
+            <Route path="/recipes/new" render={() => <NewRecipe user={props.user} />} />
+            <Route path="/recipes/:id/edit" component={EditRecipe} />
+            <Route path="/recipes/:id" render={() => <ShowRecipe user={props.user} />} />
             <Route path="/recipes" render={() => <Recipes searchedRecipes={props.searchedRecipes} />} />
             <Route path="/profile/edit" render={() => <EditProfile user={props.user} />} />
             <Route path="/profile" render={() => <Profile user={props.user} />} />
@@ -32,6 +33,8 @@ export default function Content(props) {
             <Route path="/authors/:id" component={ShowAuthor} />
             <Route path="/auth/login" render={() => <Login user={props.user} updateUser={props.updateUser} /> } />
             <Route path="/auth/signup" render={() => <Signup user={props.user} updateUser={props.updateUser} /> } />
+
+            </Switch>
         </div>
     )
 
