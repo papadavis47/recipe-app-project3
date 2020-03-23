@@ -42,17 +42,19 @@ Project was pitched to instructors and approved to go forward. Model files with 
 
 Continued coding routes and structure for MongoDB schemas. Began testing routes using Postman and a basic seeder file.
 
-## 6th Day - Wednesday 
+## 6th Day - Wednesday March 18th
 
 Began working on client side routes in React. 
 
-## 7th Day - Thursday
+## 7th Day - Thursday March 19
 
 Completed authentication files. Continued work on React functionality. More testing of React routes on client side.
 
-## 8th Day - Friday
+## 8th Day - Friday March 20th
 
 Continued work on React components. 
+
+## 9th and 10th Day - Saturday and Sunday March 21st and 22nd
 
 ## Unsolved Problems / Major Hurdles
 
