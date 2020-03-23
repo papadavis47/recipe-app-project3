@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from "axios";
+import EditDelRecipeBtn from "./EditDelRecipeBtn";
 
 export default function ShowRecipe(props) {
     // Get params from link
@@ -35,6 +36,7 @@ export default function ShowRecipe(props) {
             <h5>{recipe.description}</h5>
             <h5>{recipe.ingredients}</h5>
             <img src={recipe.image} alt={recipe.alt} />
+            <EditDelRecipeBtn user={props.user} recipeId={recipe._id} authorId={recipe.userId}/>
         </div>
     )
 
