@@ -11,20 +11,21 @@ export default function EditRecipe(props) {
     let [directions, setDirections] = useState([props.recipe.directions]);
     let [ingredients, setIngredients] = useState([props.recipe.ingredients])
     let [tags, setTags] = useState([props.recipe.tags])
+    let [message, setMessage] = useState('')
 
     useEffect()
     
     // => {
     //     setMessage("");
-    // }, [name, email, password, image, bio])
+    // }, [title, alt, image, servings, description, directions, ingredients, tags])
     
-    // redirect users who aren't logged in
+
     if (!props.user) {
         return <Redirect to='/' />
     }
     
     const handleSubmit = e => {
-        console.log("Here is your changes:", title, alt, image, description, directions, ingredients, tags)
+        console.log("Here are your changes:", title, alt, image, description, directions, ingredients, tags)
         console.log("Here is what you had before:", props.recipe.title, props.recipe.alt, props.recipe.image, props.recipe.descriptions, [props.recipe.directions], [props.recipe.ingredients], [props.recipe.tags])
         e.preventDefault()
         // TODO: Send the user's edited data to the server
@@ -93,7 +94,7 @@ export default function EditRecipe(props) {
                 <div>
                     <label>Ingredients:</label>
                     <input type="text" name="ingredients" placeholder={props.recipe.ingredients} 
-                        onChange={e => setBio(e.target.value)} 
+                        onChange={e => setIngredients(e.target.value)} 
                     />
                 </div>
                 <div>
