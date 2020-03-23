@@ -13,9 +13,17 @@ export default function EditRecipe(props) {
     let [tags, setTags] = useState([props.recipe.tags])
     let [message, setMessage] = useState('')
 
+<<<<<<< HEAD
     useEffect(() => {
         setMessage("");
     }, [title, alt, image, servings, description, directions, ingredients, tags])
+=======
+    useEffect()
+    
+    // => {
+    //     setMessage("");
+    // }, [title, alt, image, servings, description, directions, ingredients, tags])
+>>>>>>> 63a6b20e28b48af545574f45f5d5412e662c2ae7
     
 
     if (!props.user) {
