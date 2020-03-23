@@ -20,12 +20,15 @@ export default function Content(props) {
 
     return (
         <div className="App-content">
+
             <Switch>
             <Route exact path="/" component={Recipes} />
 
             <Route path="/recipes/new" render={() => <NewRecipe user={props.user} />} />
             <Route path="/recipes/:id/edit" component={EditRecipe} />
             <Route path="/recipes/:id" render={() => <ShowRecipe user={props.user} />} />
+
+         
             <Route path="/recipes" render={() => <Recipes searchedRecipes={props.searchedRecipes} />} />
             <Route path="/profile/edit" render={() => <EditProfile user={props.user} />} />
             <Route path="/profile" render={() => <Profile user={props.user} />} />

@@ -2,7 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from "axios";
+
 import FavoriteButton from "./FavoriteButton";
+
+import EditDelRecipeBtn from "./EditDelRecipeBtn";
+
 
 export default function ShowRecipe(props) {
     // Get params from link
@@ -37,7 +41,11 @@ export default function ShowRecipe(props) {
             {/* forEach ingredient */}
             <h5>{recipe.ingredients}</h5>
             <img src={recipe.image} alt={recipe.alt} />
+
             {props.user ? <FavoriteButton recipeId={recipe._id} user={props.user} /> : <Link to="/auth/signup">Sign up to favorite</Link>}
+
+            <EditDelRecipeBtn user={props.user} recipeId={recipe._id} authorId={recipe.userId}/>
+
         </div>
     )
 

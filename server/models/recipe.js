@@ -14,8 +14,14 @@ const recipeSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    image: String,
-    servings: Number,
+    image: {
+        type: String,
+        required: true
+    },
+    servings: {
+        required: true,
+        type: String
+    },
     description: {
         required: true,
         type: String,
@@ -31,10 +37,14 @@ const recipeSchema = new mongoose.Schema({
         type: [String]
     },
     date: { 
+        requried: true,
         type: Date, 
         default: Date.now 
     },
-    tags: [{ type: String }]
+    tags: {
+        type: [String],
+        required: true
+    }
 })
 
 

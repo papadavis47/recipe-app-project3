@@ -7,29 +7,37 @@ export default function NewRecipe(props) {
   // Declare and initialize state variables
   let [newRecipe, setNewRecipe] = useState({});
   let [message, setMessage] = useState("");
-  let [title, setTitle] = useState('');
-  let [alt, setAlt] = useState('');
-  let [image, setImage] = useState('');
-  let [servings, setServings] = useState(0);
+
+  let [title, setTitle] = useState('')
+  let [alt, setAlt] = useState('')
+  let [userId, setUserId] = useState('')
+  let [image, setImage] = useState('')
+  let [servings, setServings] = useState(0)
+
   let [description, setDescription] = useState("");
   let [directions, setDirections] = useState("");
   let [ingredients, setIngredients] = useState("");
-  let [date, setDate] = useState();
+  let [date, setDate] = useState("");
   let [tags, setTags] = useState("");
+
+  let redirect = "";
 
   useEffect(()=> {
 
     setMessage("");
-  }, [title, alt, image, servings, directions, ingredients, date, tags])
+  }, [title, alt, userId, image, servings, directions, ingredients, date, tags])
 
   const handleSubmit = e => {
     e.preventDefault()
+    setUserId(props.user._id);
+    console.log("I'M WORKING", props.user._id, userId);
     // TODO: Send the user sign up data to the server
-    fetch(`${process.env.REACT_APP_SERVER_URL}/recipes`, {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/recipes/`, {
       method: 'POST',
       body: JSON.stringify({
         title,
         alt,
+        userId,
         image,
         servings,
         description,
@@ -42,6 +50,7 @@ export default function NewRecipe(props) {
         'Content-Type': 'application/json'
       }
     }).then(response => {
+
         if (!response.ok) {
             console.log(response);
             setMessage(`${response.status}: ${response.statusText}`);
@@ -67,6 +76,7 @@ export default function NewRecipe(props) {
   if (!props.user) {
     return <Redirect to="/auth/login" />
   }
+
 
   return (
     <div>
