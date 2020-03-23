@@ -35,6 +35,7 @@ export default function Thumbnail(props) {
 
     // todo: click to expand description
     return (
+
         <div className="thumbnail">
             <div style={thumbStyle} class="thumbnail-img" alt={props.recipe.alt}>
             </div>
@@ -46,7 +47,7 @@ export default function Thumbnail(props) {
                     {authorLink}
                 </h4>
                 <p>{props.recipe.description}</p>
-            </div>
+          </div>
         </div>
     )
 }

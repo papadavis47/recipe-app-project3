@@ -1,16 +1,19 @@
 // Packages
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 export default function NewRecipe(props) {
   // Declare and initialize state variables
   let [newRecipe, setNewRecipe] = useState({});
   let [message, setMessage] = useState("");
+
   let [title, setTitle] = useState('')
   let [alt, setAlt] = useState('')
   let [userId, setUserId] = useState('')
   let [image, setImage] = useState('')
   let [servings, setServings] = useState(0)
+
   let [description, setDescription] = useState("");
   let [directions, setDirections] = useState("");
   let [ingredients, setIngredients] = useState("");
@@ -20,6 +23,7 @@ export default function NewRecipe(props) {
   let redirect = "";
 
   useEffect(()=> {
+
     setMessage("");
   }, [title, alt, userId, image, servings, directions, ingredients, date, tags])
 
@@ -36,6 +40,7 @@ export default function NewRecipe(props) {
         userId,
         image,
         servings,
+        description,
         directions,
         ingredients,
         date,
@@ -45,19 +50,32 @@ export default function NewRecipe(props) {
         'Content-Type': 'application/json'
       }
     }).then(response => {
-      if (!response.ok) {
-        console.log(response);
-        setMessage(`${response.status}: ${response.statusText}`);
-        return;
-      }
-      //if worked
-      redirect =  (<Redirect to={`${process.env.REACT_APP_SERVER_URL}/recipes`} />);
+
+        if (!response.ok) {
+            console.log(response);
+            setMessage(`${response.status}: ${response.statusText}`);
+            return;
+        }
+        //if worked
+        // HOW DO WE GET THE NEW RECIPE's ID????
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/profile/addRecipe`, {
+            recipeId: props.recipeId,
+            userId: props.user._id
+        })
+        .then(response => {
+            console.log(response);
+        }).catch(err => {
+            console.log(err);
+        })
+        
+        
+        return <Redirect to={`${process.env.REACT_APP_SERVER_URL}/recipes`} />
     })
   }
 
   if (!props.user) {
-    return <Redirect to='/' />
-  } 
+    return <Redirect to="/auth/login" />
+  }
 
 
   return (
@@ -103,7 +121,6 @@ export default function NewRecipe(props) {
         </div>
         <button type="submit">Create Recipe!</button>
       </form>
-      {redirect}
     </div>
   )
 }

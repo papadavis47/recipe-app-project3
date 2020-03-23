@@ -3,6 +3,37 @@ const router = express.Router();
 const db = require("../models/index");
 const bcrypt = require('bcrypt')
 
+// find by document id and update and push item in array
+// users.findByIdAndUpdate(userID,
+//     {$push: {friends: friend}},
+//     {safe: true, upsert: true},
+//     function(err, doc) {
+//         if(err){
+//         console.log(err);
+//         }else{
+//         //do stuff
+//         }
+//     }
+// );
+
+// Route to update user's favRecipes
+router.post("/addFav", (req, res) => {
+    console.log("👻")
+    db.User.findByIdAndUpdate(req.body.userId,
+        {$push: { favRecipes: req.body.recipeId }},
+        {safe: true, upsert: true}
+    )
+    .then((updated)=>res.send(updated))
+    .catch(err=>res.send({ message: 'Error in adding favRecipe to user', err}));
+})
+
+router.post("/addRecipe", (req, res) => {
+    db.User.findByIdAndUpdate(req.body.userId,
+        {$push: { userRecipes: req.body.recipeId }},
+        {safe: true, upsert: true}
+    )
+    .catch(err=>res.send({ message: 'Error in adding userRecipe to user', err}));
+})
 
 
 // need to change a line on Editprofile.js:

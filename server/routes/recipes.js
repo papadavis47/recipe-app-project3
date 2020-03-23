@@ -29,11 +29,17 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
     // console.log(req.body)
     // Remove any keys that have no value
+
+//     req.body.tags = req.body.tags.split(',').map(tag=>tag.toLowerCase().trim());
+//     req.body.directions = req.body.directions.split(',').map(direction=>direction.trim());
+//     req.body.ingredients = req.body.ingredients.split(',').map(ingredient=>ingredient.toLowerCase().trim());
+
     // let newRecipe = Object.keys(req.body).forEach((key) => (req.body[key] == '') && delete req.body[key]);
     let newRecipe = req.body;
     newRecipe.tags = req.body.tags.split(',').map(tag=>tag.toLowerCase().trim());
     newRecipe.directions = req.body.directions.split(',').map(direction=>direction.trim());
     newRecipe.ingredients = req.body.ingredients.split(',').map(ingredient=>ingredient.toLowerCase().trim());
+
     //need to pass user to new recipes (here or front end???)
     console.log(newRecipe);
     db.Recipe.create({
