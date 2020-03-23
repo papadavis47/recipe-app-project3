@@ -27,7 +27,7 @@ export default function Recipes(props) {
 
    
     // need to pass user and update user to hold recipeId
-    let searchedRecipesLinkList = props.searchedRecipes.length < 1 ?
+    let searchedRecipesLinkList = !props.searchedRecipes ?
     <h3>No more recipes. Try another search?</h3> :
     props.searchedRecipes.map((searchedRecipe, j) => (
         <div key={`recipeListItem-${j}`}>
@@ -44,7 +44,7 @@ export default function Recipes(props) {
         </div>
     ));
 
-    let outputList = props.searchedRecipes.length > 0 ? searchedRecipesLinkList : topTwentyLinkList;
+    let outputList = props.searchedRecipes ? searchedRecipesLinkList : topTwentyLinkList;
 
     return (
         <div>

@@ -14,17 +14,31 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: white;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border-bottom: 2px solid orange;
 }
 li {
   display: inline;
   padding: 0 10px;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: red;
+  text-decoration: none;
 }
 
 .App-link {
@@ -38,4 +52,47 @@ li {
   to {
     transform: rotate(360deg);
   }
+}
+
+.thumbnail {
+  width: 350px;
+  display: flex;
+  flex-direction: row;
+  border-left: 2px solid red;
+  margin: 20px;
+}
+.thumbnail-img {
+  width: 200px;
+  height: 150px;
+  padding: 10px;
+  background-size: cover;
+  background-position: center;
+}
+.thumbnail-text {
+  margin: 10px;
+  text-align: left;
+}
+.fancy {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-transform: capitalize;
+}
+.author {
+  text-transform: uppercase;
+}
+.bio {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  float: left;
+  margin: 20px;
+}
+.bio-img {
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  background-size: cover;
+  background-position: center;
+}
+.bio-text {
+  padding: 10px;
 }

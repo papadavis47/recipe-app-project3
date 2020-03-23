@@ -7,7 +7,10 @@ export default function Thumbnail(props) {
     console.log("PROPS", props)
     const [author, setAuthor]= useState('');
     let [error, setError] = useState(null);
-    
+    const thumbStyle = {
+        backgroundImage: 'url(' + props.recipe.image + ')'
+    }
+
     useEffect(() => {
         // get the recipes userID's user
         axios.get(`${process.env.REACT_APP_SERVER_URL}/authors/${props.recipe.userId}`)
@@ -32,15 +35,18 @@ export default function Thumbnail(props) {
 
     // todo: click to expand description
     return (
-        <div>
-            <img src={props.recipe.image} alt={props.recipe.alt} />
-            <h3>
-                <Link to={`/recipes/${props.recipe._id}`}>{props.recipe.title}</Link>
-            </h3>
-            <h4>
-                {authorLink}
-            </h4>
-            <p>{props.recipe.description}</p>
+        <div className="thumbnail">
+            <div style={thumbStyle} class="thumbnail-img" alt={props.recipe.alt}>
+            </div>
+            <div className="thumbnail-text">
+                <h3 className="fancy">
+                    <Link to={`/recipes/${props.recipe._id}`}>{props.recipe.title}</Link>
+                </h3>
+                <h4 className="author">
+                    {authorLink}
+                </h4>
+                <p>{props.recipe.description}</p>
+            </div>
         </div>
     )
 }
