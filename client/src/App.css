@@ -183,8 +183,8 @@ a:hover {
 }
 .recipe-img {
   border-left: 2px solid red;
-  width: 400px;
-  height: 500px;
+  width: 450px;
+  height: 400px;
   padding: 0;
   background-size: cover;
   background-position: center;
@@ -199,7 +199,7 @@ a:hover {
   text-align: left;
 }
 .recipe {
-  width: 400px;
+  width: 440px;
   padding: 10px;
   text-align: left;
 }
@@ -209,7 +209,7 @@ a:hover {
   text-align: left;
   background: white;
   border-radius: 10px 10px 0 0; 
-  margin: 0 10px;
+  margin: 10px 0 0 10px;
   padding: 10px 10px 0 10px;
 }
 .recipe-tab-text {
@@ -234,10 +234,11 @@ a:hover {
   margin: 10px;
 }
 .recipe-steps {
-  width: 100%;
+  width: 550px;
   background: rgb(255, 255, 219);
   border-radius: 10px;
-  margin: 10px;
+  margin: 0 0 0 70px;
+  text-align: left;
 }
 .recipe-steps h3 {
   padding: 20px 20px 0 20px;
@@ -257,7 +258,8 @@ a:hover {
   justify-content: flex-start;
   flex-wrap: wrap;
   border-radius: 10px;
-  margin: 10px;
+  margin: 0 0 0 70px;
+  width: 550px;
 }
 .recipe-tags h4 {
   margin: 0;
@@ -291,7 +293,7 @@ label {
   font-size: 32px;
   font-weight: bolder;
   text-transform: uppercase;
-
+  
 }
 
 .form-background {
@@ -313,5 +315,21 @@ label {
   font: Georgia, 'Times New Roman', Times, serif;
   text-shadow:none;
   padding: 8px;
-  
   }
+  @media only screen and (max-width: 500px) {
+    .recipe, .recipe-img, .recipe-steps, .recipe-tags {
+      margin: 10px 0;
+      width: 100%;
+    }
+    .recipe-text {
+      margin: 0;
+      width: 100%;
+    }
+    .recipe-tab {
+      margin-left: 0;
+    }
+    .recipe-ing {
+      width: 110px;
+    }
+  }
+

@@ -49,7 +49,7 @@ export default function FavoriteButton(props) {
         })
         .then(response => {
             setFavorite(props.recipeId);
-            <p>Added to favorites!</p>
+            // return (<p>Added to favorites!</p>);
         }).catch(err => {
             console.log("🎃")
             console.log(err);
