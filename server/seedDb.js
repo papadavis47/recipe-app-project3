@@ -185,3 +185,137 @@ db.User.create({
     ).catch(err=>console.log(err))
   }).catch(err=>console.log(err))
 }).catch(err=>console.log(err))
+
+db.User.create({
+  name: "Natasha's Kitchen Fan Club",
+  email: 'natasha@test.com',
+  password: 'natasha1234',
+  image: 'https://natashaskitchen.com/wp-content/themes/natashas-kitchen/images/logo.png',
+  bio: "Unofficial fan club for Natasha's Kitchen",
+  userRecipes: [],
+  favRecipes: []
+}).then(author => {
+  db.Recipe.create({
+    title: "Classic Borscht Recipe",
+    alt: 'a delicious bowl of borscht',
+    userId: author._id,
+    image: "https://natashaskitchen.com/wp-content/uploads/2018/10/Borscht-Recipe-2.jpg",
+    servings: '4',
+    description: "This is our family’s version of classic borsch and it’s one of the two soups my children absolutely love (Mom’s Meatball Soup being the second). Borscht is definitely on the regular rotation at our house!",
+    directions: [
+      "Peel, grate and/or slice all vegetables, keeping sliced potatoes in cold water until ready to use.",
+      "Heat a large soup pot (5 1/2 Qt or larger) over medium/high heat and add 2 Tbsp olive oil. Add grated beets and sauté 10 minutes, stirring occasionally until beets are softened.",
+      "Add 4 cups broth and 6 cups water. Add sliced potatoes and sliced carrots then cook for 10-15 minutes or until easily pierced with a fork.",
+      "While potatoes are cooking, place a large skillet over medium/high heat and add 2 Tbsp oil. Add chopped onion, celery and bell pepper. Saute stirring occasionally until softened and lightly golden (7-8 minutes). Add 4 Tbsp Ketchup and stir fry 30 seconds then transfer to the soup pot to continue cooking with the potatoes.",
+      "When potatoes and carrots reach desired softness, add 1 can of beans with their juice, 2 bay leaves, 2-3 Tbsp white vinegar, 1 tsp salt, 1/4 tsp black pepper, 1 pressed garlic clove, and 3 Tbsp chopped dill. Simmer for an additional 2-3 minutes and add more salt and vinegar to taste."
+    ],
+    ingredients: [
+      "3 medium beets peeled and grated",
+      "4 Tbsp olive oil divided",
+      "4 cups reduced sodium chicken broth + 6 cups water",
+      "3 medium yukon potatoes peeled and sliced into bite-sized pieces",
+      "2 carrots peeled and thinly sliced",
+      "2 celery ribs trimmed and finely chopped",
+      "1 small red bell pepper finely chopped, optional",
+      "1 medium onion finely chopped",
+      "4 Tbsp ketchup or 3 Tbsp tomato sauce",
+      "1 can white cannelini beans with their juice",
+      "2 bay leaves",
+      "2-3 Tbsp white vinegar or to taste",
+      "1 tsp sea salt or to taste",
+      "1/4 tsp black pepper freshly ground",
+      "1 large garlic clove pressed",
+      "3 Tbsp chopped dill"
+    ],
+    tags: [
+      "Russian food",
+      "Ukrainian food",
+      "beets",
+      "borscht"
+    ]
+  }).then(recipe => {
+    // add recipe to author
+    db.User.findByIdAndUpdate(author._id,
+      {$push: {userRecipes: recipe._id}}
+    ).catch(err=>console.log(err))
+  }).catch(err=>console.log(err))
+  db.Recipe.create({
+    title: "Crusty French Bread",
+    alt: 'some delicious French bread',
+    userId: author._id,
+    image: "https://natashaskitchen.com/wp-content/uploads/2016/03/Rustic-Crusty-French-Loaf-4.jpg",
+    servings: '3',
+    description: "This rustic crusty French bread loaf is legit. Underneath that amazing crust, you’ll discover a soft spongy center. It’s the perfect blend of chewy and super soft.",
+    directions: [
+      "In the bowl of a mixer (or by hand), whisk together 1 3/4 cups warm water and 1/2 tsp molasses until dissolved.",
+      "In a large glass or plastic bowl, whisk together 2 1/3 cups bread flour, 2 1/2 cups all-purpose flour, 1 1/4 tsp yeast and 2 tsp salt. Add water mixture to flour mixture and mix until you have a single mass of dough. Using a dough hook or clean hands, knead dough 4 minutes. Dough should be soft and feel sticky to the touch but should not stick to clean and dry finger tips. If your dough is too sticky after kneading, add more flour a tablespoon at a time.",
+      "Cover dough loosely with plastic wrap and let rise at room temp (69-75˚F) for 4 hours. Every hour while it rests (3 times total), with a wet hand, punch the dough down and fold it over onto itself a few times (a wet hand will keep the dough from sticking to you without adding any unnecessary flour).",
+      "After rising a total of 4 hours, draw dough edges into the center, turn over and place in a large well-floured bowl, sprinkle the dough with flour, cover with a tea towel and let rise 1 1/2 hours at room temp.",
+      "Meanwhile, place a pizza stone or inverted baking sheet in the center of your oven. Place a cast iron pan on the bottom rack and preheat with both in the oven to 500˚F (for safety, don't use glass baking dishes at those high temps).",
+      "Sprinkle the back of a baking sheet generously with fine semolina flour and invert your risen dough over the top of the semolina. Score the top of the dough several times. Slide dough onto preheated baking stone with the help of a spatula if needed and add 1 cup of ice cubes into the preheated cast iron pan below (making sure not to drip on any glass oven surfaces). Bake at 500˚F for 10 minutes then reduce temperature to 400˚F and continue baking 30-35 minutes, or until top is golden brown. Turn oven off, crack door open with a wooden spoon and leave bread in the oven another 10 minutes. Remove bread to a wire rack to cool and let it rest at least 15 minutes before cutting into it.",
+      "*To measure flour correctly, fluff it up then spoon it into measuring cups and scrape off the top for an exact measure"
+    ],
+    ingredients: [
+      "1 3/4 cups warm water 90˚ to 100˚F",
+      "1/2 tsp molasses",
+      "2 1/3 cups 290 grams unbleached bread flour, measured correctly*",
+      "2 1/2 cups 315 grams unbleached all-purpose flour, measured correctly*",
+      "1 1/4 tsp 1/2 packet instant yeast (quick rise)",
+      "2 tsp salt I used fine sea salt",
+      "All-purpose Flour and semolina flour for dusting"
+    ],
+    tags: [
+      "bread",
+      "French cooking",
+      "French bread",
+      "baguette"
+    ]
+  }).then(recipe => {
+    // add recipe to author
+    db.User.findByIdAndUpdate(author._id,
+      {$push: {userRecipes: recipe._id}}
+    ).catch(err=>console.log(err))
+  }).catch(err=>console.log(err))  
+  db.Recipe.create({
+    title: "Bliny (Russian Crepes with Cheese)",
+    alt: 'some delicious bliny',
+    userId: author._id,
+    image: "https://natashaskitchen.com/wp-content/uploads/2013/02/Crepes-with-Cheese.jpg",
+    servings: '6',
+    description: "We’ve been eating crepes for the past 2 weeks for breakfast and I’m pretty sure I’ll never grow tired of them. These Russian crepes with cheese are our favorite breakfast and I love that they can be prepared ahead of time; making it the ideal breakfast dish for company.",
+    directions: [
+      "Put all of the ingredients for the crepes (in the order that they are listed) in a blender and blend until well combined: 1/2 cup lukwarm water, 1 cup milk, 4 eggs, 4 tbsp melted butter (or olive oil), 1 cup flour.",
+      "Melt a dot of butter in a non-stick skillet over medium heat (2 skillets make the process go faster).",
+      "As you are pouring into the skillet, swirl the batter to evenly coat the bottom. If you get any small gaps, you can fill them with more batter. Depending on the size of your skillet; add about 2-3 Tbsp of batter. I use a small ladle.",
+      "Once the bottom is lightly golden (about a minute or less) flip the crepe using a sharp edged spatula to easily get under the crepe. Let the other side get lightly golden and plop the crepe out onto a cutting board.",
+      "Repeat with remaining batter; you may not need to dot with butter after the first time if your skillet is a good one (and remember there is butter in the batter). Don’t stack hot crepes on top of each other. Once they are just warm or room temp, they can be stacked.",
+      "Don’t panic, my first crepe never turns out nice so I wolf it down to conceal the evidence!"
+    ],
+    ingredients: [
+      "½ cup lukewarm water",
+      "1 cup milk",
+      "4 large eggs",
+      "4 Tbsp unsalted butter melted. Plus more to sauté.",
+      "1 cup all-purpose flour you can use 1/2 cup whole wheat flour and 1/2 cup all-purpose",
+      "2 Tbsp sugar",
+      "Pinch salt",
+      "8 oz package cream cheese at room temperature",
+      "16 oz small curd cottage cheese",
+      "1/3 cup sugar",
+      "¾ cup raisins",
+      "Powdered sugar for serving optional"
+    ],
+    tags: [
+      "Russian food",
+      "bliny",
+      "crepes",
+      "cheese",
+      "breakfast"
+    ]
+  }).then(recipe => {
+    // add recipe to author
+    db.User.findByIdAndUpdate(author._id,
+      {$push: {userRecipes: recipe._id}}
+    ).catch(err=>console.log(err))
+  }).catch(err=>console.log(err))
+}).catch(err=>console.log(err))

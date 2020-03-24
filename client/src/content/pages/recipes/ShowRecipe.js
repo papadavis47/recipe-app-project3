@@ -11,7 +11,7 @@ export default function ShowRecipe(props) {
     const { id } = useParams();
     const [recipe, setRecipe] = useState("");
     const [error, setError] = useState(null);
-//     const [author, setAuthor]= useState('');
+    const [author, setAuthor]= useState('');
 
     let recipeStyle = {
         backgroundImage: 'url(' + recipe.image + ')'
@@ -23,32 +23,28 @@ export default function ShowRecipe(props) {
             console.log("👹");
             setRecipe(response.data);
 // =======
-//             if (response.data.message) {
-//                 setError(response.data.message);
-//                 console.log(response.data.err);
-//             } else {
-//                 setRecipe(response.data);
-//                 console.log("RECIPE:", response.data);
-//                 // get the author'sname
-//                 axios.get(`${process.env.REACT_APP_SERVER_URL}/authors/${response.data.userId}`)
-//                 .then(res2 => {
-//                     if (res2.data.message) {
-//                         setError(res2.data.message);
-//                         console.log("💥", res2.data.err);
-//                     } else {
-//                         console.log("res2.data:", res2.data)
-//                         setAuthor(res2.data);
-//                     }
-//         }).catch(err => {
-//             setError(err);
-//             console.log(err);
-//         });
-//             }
-// >>>>>>> master
-        })
-        .catch(err=> {
-            console.log(err);
+            if (response.data.message) {
+                setError(response.data.message);
+                console.log(response.data.err);
+            } else {
+                setRecipe(response.data);
+                console.log("RECIPE:", response.data);
+                // get the author'sname
+                axios.get(`${process.env.REACT_APP_SERVER_URL}/authors/${response.data.userId}`)
+                .then(res2 => {
+                    if (res2.data.message) {
+                        setError(res2.data.message);
+                        console.log("💥", res2.data.err);
+                    } else {
+                        console.log("res2.data:", res2.data)
+                        setAuthor(res2.data);
+                    }
+        }).catch(err => {
             setError(err);
+            console.log(err);
+        });
+            }
+// >>>>>>> master
         })
     }, []);
 
@@ -61,7 +57,7 @@ export default function ShowRecipe(props) {
     })
 
 
-            {props.user ? <FavoriteButton recipeId={id} user={props.user} /> : <Link to="/auth/signup">Sign up to favorite</Link>}
+            // {props.user ? <FavoriteButton recipeId={id} user={props.user} /> : <Link to="/auth/signup">Sign up to favorite</Link>}
 
     let directions = !recipe? "" : recipe.directions.map((step, index) => {
         return (<li className="recipe-step" key={step + index}>{index + 1}. {step}</li>)
@@ -74,12 +70,12 @@ export default function ShowRecipe(props) {
 
     let recipeDetails = !recipe ? <h3 className="white-bg">Loading...</h3> : (
         <div className="content">
-            <div class="recipe-img" style={recipeStyle} alt={recipe.alt}>
-                <div class="recipe-img-text">
-                    <h3>{recipe.description}</h3>
-                </div>
-            </div>
             <div className="recipe">
+                <div class="recipe-img" style={recipeStyle} alt={recipe.alt}>
+                    <div class="recipe-img-text">
+                        <h3>{recipe.description}</h3>
+                    </div>
+                </div>
                 <div className="recipe-tab">
                     <h3 className="recipe-tab-text">
                         <span className="fancy">Author - </span>
@@ -94,8 +90,10 @@ export default function ShowRecipe(props) {
                         {ingredientList}
                     </ul>
                     {props.user ? <FavoriteButton recipeId={recipe._id} user={props.user} /> : <Link to="/auth/signup">Sign up to favorite</Link>}
-                    <EditDelRecipeBtn user={props.user} recipeId={recipe._id} authorId={recipe.userId}/>
+                    <EditDelRecipeBtn user={props.user} recipe={recipe} authorId={recipe.userId}/>
                 </div>
+            </div>
+            <div>
                 <div className="recipe-steps">
                     <h3>Directions</h3>
                     <hr />
