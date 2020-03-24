@@ -49,8 +49,8 @@ export default function Signup(props) {
   }
 
   return (
-    <div>
-      <h2>Signup</h2>
+    <div className="form-background">
+      <h2 className="form-title">Signup</h2>
       <span className="red">{message}</span>
       <form onSubmit={handleSubmit}>
         <div>
@@ -73,7 +73,7 @@ export default function Signup(props) {
           <label>Bio:</label>
           <input type="text" name="bio" placeholder="Say something about yourself" onChange={e => setBio(e.target.value)} />
         </div>
-        <button type="submit">Sign Me Up!</button>
+        <button className="form-button" type="submit">Sign Me Up!</button>
       </form>
     </div>
   )

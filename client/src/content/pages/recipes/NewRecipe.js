@@ -79,8 +79,8 @@ export default function NewRecipe(props) {
 
 
   return (
-    <div>
-      <h2>New Recipe</h2>
+    <div className="form-background">
+      <h2 className="form-title">New Recipe</h2>
       <span className="red">{message}</span>
       <form onSubmit={handleSubmit}>
         <div>
@@ -119,7 +119,7 @@ export default function NewRecipe(props) {
           <label>Tags:</label>
           <input type="text" name="tags" placeholder="Comma-separate your list of tags, the more the better!" onChange={e => setTags(e.target.value)} />
         </div>
-        <button type="submit">Create Recipe!</button>
+        <button className="form-button" type="submit">Create Recipe!</button>
       </form>
     </div>
   )

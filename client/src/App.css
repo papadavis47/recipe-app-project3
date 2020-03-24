@@ -266,3 +266,52 @@ a:hover {
 .recipe-tag {
   margin: 20px;
 }
+
+/*-------------------------FORMs-------------------------------------------*/
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+label {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.form-title {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 32px;
+  font-weight: bolder;
+  text-transform: uppercase;
+
+}
+
+.form-background {
+  background-color: wheat;
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 2px solid blanchedalmond;
+}
+
+.form-button {
+
+  background: blanchedAlmond;
+  color: black;
+  font-weight: bold;
+  border-style: outset;
+  border-color: bisque;
+  height: 50px;
+  width: 100px;
+  font: Georgia, 'Times New Roman', Times, serif;
+  text-shadow:none;
+  padding: 8px;
+  
+  }

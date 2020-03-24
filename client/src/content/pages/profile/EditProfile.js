@@ -52,8 +52,8 @@ export default function EditProfile(props) {
 
 
     return (
-        <div>
-            <h2>Edit Profile</h2>
+        <div className="form-background">
+            <h2 className="form-title">Edit Profile</h2>
             <span className="red">{message}</span>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -86,7 +86,7 @@ export default function EditProfile(props) {
                         onChange={e => setBio(e.target.value)} 
                     />
                 </div>
-                <button type="submit">Update</button>
+                <button className="form-button" type="submit">Update</button>
             </form>
       </div>
     )

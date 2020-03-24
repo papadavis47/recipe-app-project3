@@ -55,8 +55,8 @@ export default function EditRecipe(props) {
 
 
     return (
-        <div>
-            <h2>Edit Recipe</h2>
+        <div className="form-background">
+            <h2 className="form-title">Edit Recipe</h2>
             <span className="red">{message}</span>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -101,7 +101,7 @@ export default function EditRecipe(props) {
                         onChange={e => setTags(e.target.value)} 
                     />
                 </div>
-                <button type="submit">Update</button>
+                <button className="form-button" type="submit">Update</button>
             </form>
       </div>
     )
