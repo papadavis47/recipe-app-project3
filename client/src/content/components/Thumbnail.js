@@ -36,19 +36,21 @@ export default function Thumbnail(props) {
     // todo: click to expand description
     return (
         <div className="thumbnail">
-                <h4 className="author thumbnail-tab">
-                    {authorLink}
-                </h4>
-            <div className="thumbnail-text">
-                <div style={thumbStyle} className="thumbnail-img" alt={props.recipe.alt}>
+            <h4 className="author thumbnail-tab">
+                {authorLink}
+            </h4>
+            <div className="thumbnail-content">
+                <div className="thumbnail-header">
+                    <div style={thumbStyle} className="thumbnail-img" alt={props.recipe.alt}>
+                    </div>
+                    <div className="thumbnail-innertext">
+                        <h3 className="fancy">
+                            <Link to={`/recipes/${props.recipe._id}`}>{props.recipe.title}</Link>
+                        </h3>
+                    </div>
                 </div>
-                <div className="thumbnail-innertext">
-                    <h3 className="fancy">
-                        <Link to={`/recipes/${props.recipe._id}`}>{props.recipe.title}</Link>
-                    </h3>
-                    <p>{props.recipe.description}</p>
-                </div>
-          </div>
+                <p>{props.recipe.description}</p>
+            </div>
         </div>
     )
 }

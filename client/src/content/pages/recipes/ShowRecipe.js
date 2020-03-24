@@ -14,8 +14,7 @@ export default function ShowRecipe(props) {
     const [author, setAuthor]= useState('');
 
     let recipeStyle = {
-        // backgroundImage: 'url(' + recipe.img + ')'
-        backgroundImage: 'url(https://s23209.pcdn.co/wp-content/uploads/2014/03/IMG_2622edit.jpg)'
+        backgroundImage: 'url(' + recipe.image + ')'
     }
 
     useEffect(() => {

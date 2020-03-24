@@ -101,35 +101,37 @@ a:hover {
   justify-content: space-evenly;
 }
 .thumbnail {
-  width: 300px;
+  width: 350px;
   padding: 10px;
   text-align: left;
 }
 .thumbnail-tab {
   display: inline-block;
-  max-width: 50%;
+  max-width: 70%;
   text-align: left;
   background: white;
   border-radius: 10px 10px 0 0; 
   margin: 0;
   padding: 10px 10px 0 10px;
 }
-.thumbnail-img {
-  border-left: 2px solid red;
-  width: 200px;
-  height: 150px;
-  padding: 0;
-  background-size: cover;
-  background-position: center;
-}
-.thumbnail-text {
-  display: flex;
-  flex-direction: row;
+.thumbnail-content {
   background: white;
   margin: 0;
   text-align: left;
   padding: 10px;
   border-radius: 0 10px 10px 10px;
+}
+.thumbnail-img {
+  border-left: 2px solid red;
+  width: 200px;
+  height: 125px;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+}
+.thumbnail-header {
+  display: flex;
+  flex-direction: row;
 }
 .thumbnail-innertext {
   padding: 10px;
@@ -193,6 +195,8 @@ a:hover {
 }
 .recipe-img-text {
   background: rgba(0,0,0,0.6);
+  padding: 0 10px;
+  text-align: left;
 }
 .recipe {
   width: 400px;
