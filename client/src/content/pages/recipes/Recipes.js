@@ -41,8 +41,6 @@ export default function Recipes(props) {
     topTwenty.map((topTwenty, i) => (
         <div key={`recipeListItem-${i}`}>
             <Thumbnail recipe={topTwenty} />
-
-
         </div>
     ));
 
@@ -50,9 +48,10 @@ export default function Recipes(props) {
 
     return (
         <div>
-          <h1>RECIPES STUB</h1>
-          <Link to="/recipes/new">Add a recipe</Link>
-          {outputList}
+          <Link to="/recipes/new" className="white-bg">Add a recipe</Link>
+          <div className="content">
+            {outputList}
+          </div>
         </div>
       )
 

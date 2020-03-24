@@ -47,8 +47,8 @@ export default function Login(props) {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="form-background">
+      <h2 className="form-title">Login</h2>
       <span className="red">{message}</span>
       <form onSubmit={handleSubmit}>
           <div>
@@ -59,7 +59,7 @@ export default function Login(props) {
             <label>Password:</label>
             <input type="password" name="password" onChange={e => setPassword(e.target.value)} />
           </div>
-          <button type="submit">Sign in!</button>
+          <button className="form-button" type="submit">Sign in!</button>
         </form>
     </div>
   )

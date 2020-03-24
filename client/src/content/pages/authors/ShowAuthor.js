@@ -30,12 +30,12 @@ export default function ShowAuthor(props) {
 
     let recipeLinkList = authorRecipes.map(recipe => {
         return (
-            <Thumbnail recipe={recipe} isAuthor={true} />
+            <Thumbnail recipe={recipe} />
         )  
     });
 
     return (
-        <div>
+        <div className="content">
             <div>
                 <Bio name={author.name} bio={author.bio} image={author.image} />
             </div>

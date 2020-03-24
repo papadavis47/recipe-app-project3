@@ -11,7 +11,6 @@ export default function Profile(props) {
     let [error, setError] = useState(null);
 
     useEffect(() => {
-        console.log("🤙 about to make axios call")
         if (props.user) {
             axios.get(`${process.env.REACT_APP_SERVER_URL}/authors/${props.user._id}`)
             .then(response => {
@@ -36,7 +35,7 @@ export default function Profile(props) {
 
     console.log("the user is 😎", props.user)
 
-    let recipeLinkList = (<p>You haven't posted any recipes yet</p>);
+    let recipeLinkList = (<p className="dark-bg">You haven't posted any recipes yet</p>);
     if (userRecipes && userRecipes.length > 0) {
         recipeLinkList = userRecipes.map(recipe => {
             return (
@@ -45,7 +44,7 @@ export default function Profile(props) {
         });
     }  
 
-    let favesLinkList = (<p>No Favorites to show</p>);
+    let favesLinkList = (<p className="dark-bg">No Favorites to show</p>);
     if (userFaves && userFaves.length > 0) {
         favesLinkList = userFaves.map(recipe => {
             console.log(recipe)
@@ -56,19 +55,19 @@ export default function Profile(props) {
     }
 
     return (
-        <div>
+        <div className="content">
             <div>
                 <Bio name={props.user? props.user.name: ""} 
                     bio={props.user? props.user.bio: ""} 
                     image={props.user? props.user.image: ""} />
-                <Link to="/profile/edit" className="App-link">Edit Profile</Link>
+                <Link to="/profile/edit" className="App-link white-bg">Edit Profile</Link>
             </div>
             <div> 
-                <h3>My Favorites</h3>
+                <h3 className="white-bg">My Favorites</h3>
                 {favesLinkList}
             </div>
             <div>
-                <h3>My Recipes</h3>
+                <h3 className="white-bg">My Recipes</h3>
                 {recipeLinkList}
             </div>
         </div>
