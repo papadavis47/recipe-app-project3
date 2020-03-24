@@ -91,6 +91,10 @@ Worked with instructors on continued debugging.
 
 ## Unsolved Problems / Major Hurdles
 
+* We will need to continue to debug for various edge cases
+* We want to continue to add features
+* Learning the gitflow and learning React were the major hurdles to overcome for this project
+
 
 ## STRETCH GOALS
 
