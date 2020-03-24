@@ -277,6 +277,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 16px;
 }
 
 label {
@@ -303,11 +304,13 @@ label {
 
   background: blanchedAlmond;
   color: black;
+  font-weight: bold;
   border-style: outset;
   border-color: bisque;
   height: 50px;
   width: 100px;
   font: Georgia, 'Times New Roman', Times, serif;
   text-shadow:none;
+  padding: 8px;
   
   }
