@@ -40,7 +40,6 @@ const App = function() {
     }
   }
   
-
   return (
     <Router>
       <div className="App">

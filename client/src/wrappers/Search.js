@@ -23,12 +23,10 @@ export default function Search(props) {
     
     return (
         <div className="App-search">
-            <h1>Recipe Seach</h1>
             <form>
-                <label>Type in keywords to discover new recipes!</label>
-                <input type="text" name="search" onChange={e => setFormInput(e.target.value)} required />
-
-                <button type="submit"><Link onClick={handleSubmit} to="/recipes">Search</Link></button>
+                <label className="search-label">Type in keywords to discover new recipes!</label>
+                <button className="search-button" type="submit"><Link onClick={handleSubmit} to="/recipes" alt="Search">🔍</Link></button>
+                <input type="text" className="search-field" placeholder="Type in keywords to discover new recipes!" name="search" onChange={e => setFormInput(e.target.value)} required />
             </form>
         </div>
     )

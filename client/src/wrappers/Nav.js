@@ -26,7 +26,7 @@ export default function Nav(props) {
     if (props.user) {
         links = (
           <span>
-            <li>Hello {props.user.name}!</li>
+            <li className="fancy">Hello {props.user.name}!</li>
             <li className="App-nav-link"> 
               <Link to="/profile" className="App-link">Profile</Link>
             </li>
@@ -41,7 +41,7 @@ export default function Nav(props) {
         <nav>
             <ul className="App-nav">
                 <li className="App-nav-link">
-                    <Link to="/about" className="App-link">About</Link>
+                    <a href="https://github.com/papadavis47/recipe-app-project3" className="App-link">About</a>
                 </li>
                 <li className="App-nav-link">
                     <Link to="/authors" className="App-link">Authors</Link>

@@ -24,19 +24,25 @@ export default function Authors(props) {
         });
     }, []);
 
+    let key = 0
+
     let authorLinkList = authors.map(author => {
+        key++;
         return <AuthorThumbnail name={author.name} 
                 image={author.image} 
                 numRecipes={author.userRecipes.length}
                 id={author._id}
                 user={props.user}
+                key={key}
             />
     });
 
     return (
         <div>
-            <h2>Authors</h2>
-            {authorLinkList}
+            <h2 className="white-bg">Authors</h2>
+            <div className="content">
+                {authorLinkList}
+            </div>
         </div>
     )
 }
