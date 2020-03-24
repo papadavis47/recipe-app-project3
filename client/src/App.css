@@ -293,7 +293,7 @@ label {
   font-size: 32px;
   font-weight: bolder;
   text-transform: uppercase;
-
+  
 }
 
 .form-background {
@@ -315,6 +315,21 @@ label {
   font: Georgia, 'Times New Roman', Times, serif;
   text-shadow:none;
   padding: 8px;
-  
+  }
+  @media only screen and (max-width: 500px) {
+    .recipe, .recipe-img, .recipe-steps, .recipe-tags {
+      margin: 10px 0;
+      width: 100%;
+    }
+    .recipe-text {
+      margin: 0;
+      width: 100%;
+    }
+    .recipe-tab {
+      margin-left: 0;
+    }
+    .recipe-ing {
+      width: 110px;
+    }
   }
 

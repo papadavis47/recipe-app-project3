@@ -17,6 +17,7 @@ export default function NewRecipe(props) {
   let [directions, setDirections] = useState("");
   let [ingredients, setIngredients] = useState("");
   let [tags, setTags] = useState("");
+  let [chars, setChars] = useState(280);
 
   useEffect(()=> {
 
@@ -81,12 +82,15 @@ export default function NewRecipe(props) {
           <input type="number" name="servings" onChange={e => setServings(e.target.value)} />
         </div>
         <div>
-          <label>Description:</label>
-          <input type="text" name="description" placeholder="Explain your recipe in 280 characters or less..." onChange={e => setDescription(e.target.value)} />
+          <label>Description: ({chars} character{chars===1?'':'s'} remaining)</label>
+          <input type="text" name="description" placeholder="Describe your recipe" onChange={(e) => {
+            setDescription(e.target.value);
+            setChars(280 - e.target.value.length);
+          }} />
         </div>
         <div>
           <label>Directions:</label>
-          <input type="text" name="directions" placeholder="Comma-seperate your list of directions..." onChange={e => setDirections(e.target.value)} />
+          <input type="text" name="directions" placeholder="Comma-separate your list of directions..." onChange={e => setDirections(e.target.value)} />
         </div>
         <div>
           <label>Ingredients:</label>
