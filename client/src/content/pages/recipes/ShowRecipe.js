@@ -58,7 +58,7 @@ export default function ShowRecipe(props) {
     })
 
     let directions = !recipe? "" : recipe.directions.map((step, index) => {
-        return (<li className="recipe-step" key={step + index}>{step}</li>)
+        return (<li className="recipe-step" key={step + index}>{index + 1}. {step}</li>)
     })
 
     let tagList = !recipe? "" : recipe.tags.map((tag, index) => {
@@ -81,6 +81,7 @@ export default function ShowRecipe(props) {
                 </div>
                 <div className="recipe-text">
                     <h2 className="fancy">{recipe.title}</h2>
+                    <hr />
                     <h3>Ingredients</h3>
                     <ul className="recipe-ingredients">
                         {ingredientList}
@@ -91,9 +92,9 @@ export default function ShowRecipe(props) {
                 <div className="recipe-steps">
                     <h3>Directions</h3>
                     <hr />
-                    <ol>
+                    <ul>
                         {directions}
-                    </ol>
+                    </ul>
                 </div>
                 <div className="recipe-tags">
                     <h4>Tags for this recipe</h4>

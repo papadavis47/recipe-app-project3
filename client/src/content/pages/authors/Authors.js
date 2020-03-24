@@ -24,7 +24,7 @@ export default function Authors(props) {
         });
     }, []);
 
-    let key = 0
+    let key = 0;
 
     let authorLinkList = authors.map(author => {
         key++;
@@ -39,7 +39,7 @@ export default function Authors(props) {
 
     return (
         <div>
-            <h2 className="white-bg">Authors</h2>
+            <h2 className="white-bg fancy">Authors</h2>
             <div className="content">
                 {authorLinkList}
             </div>
