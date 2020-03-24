@@ -20,7 +20,7 @@ const recipeSchema = new mongoose.Schema({
     },
     servings: {
         required: true,
-        type: String
+        type: Number
     },
     description: {
         required: true,
@@ -37,7 +37,6 @@ const recipeSchema = new mongoose.Schema({
         type: [String]
     },
     date: { 
-        requried: true,
         type: Date, 
         default: Date.now 
     },

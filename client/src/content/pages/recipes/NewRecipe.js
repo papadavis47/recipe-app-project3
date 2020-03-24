@@ -7,69 +7,50 @@ export default function NewRecipe(props) {
   // Declare and initialize state variables
   let [newRecipe, setNewRecipe] = useState({});
   let [message, setMessage] = useState("");
-
-  let [title, setTitle] = useState('')
-  let [alt, setAlt] = useState('')
-  let [userId, setUserId] = useState('')
-  let [image, setImage] = useState('')
-  let [servings, setServings] = useState(0)
+  let [redirect, setRedirect] = useState("");
+  let [title, setTitle] = useState('');
+  let [alt, setAlt] = useState('');
+  let [image, setImage] = useState('');
+  let [servings, setServings] = useState(0);
 
   let [description, setDescription] = useState("");
   let [directions, setDirections] = useState("");
   let [ingredients, setIngredients] = useState("");
-  let [date, setDate] = useState("");
   let [tags, setTags] = useState("");
-
-  let redirect = "";
 
   useEffect(()=> {
 
     setMessage("");
-  }, [title, alt, userId, image, servings, directions, ingredients, date, tags])
+  }, [title, alt, image, servings, directions, ingredients, tags])
 
   const handleSubmit = e => {
     e.preventDefault()
-    setUserId(props.user._id);
-    console.log("I'M WORKING", props.user._id, userId);
     // TODO: Send the user sign up data to the server
     fetch(`${process.env.REACT_APP_SERVER_URL}/recipes/`, {
       method: 'POST',
       body: JSON.stringify({
         title,
         alt,
-        userId,
+        userId: props.user._id,
         image,
         servings,
         description,
         directions,
         ingredients,
-        date,
         tags
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("mernToken")}`
       }
     }).then(response => {
-
         if (!response.ok) {
             console.log(response);
             setMessage(`${response.status}: ${response.statusText}`);
             return;
+        } else {
+            setRedirect(<Redirect to={`/`} />)
         }
-        //if worked
-        // HOW DO WE GET THE NEW RECIPE's ID????
-        axios.post(`${process.env.REACT_APP_SERVER_URL}/profile/addRecipe`, {
-            recipeId: props.recipeId,
-            userId: props.user._id
-        })
-        .then(response => {
-            console.log(response);
-        }).catch(err => {
-            console.log(err);
-        })
-        
-        
-        return <Redirect to={`${process.env.REACT_APP_SERVER_URL}/recipes`} />
     })
   }
 
@@ -112,15 +93,13 @@ export default function NewRecipe(props) {
           <input type="text" name="ingredients" placeholder="Comma-separate your list of ingredients..." onChange={e => setIngredients(e.target.value)} />
         </div>
         <div>
-          <label>Date:</label>
-          <input type="text" name="date" onChange={e => setDate(e.target.value)} />
-        </div>
-        <div>
           <label>Tags:</label>
           <input type="text" name="tags" placeholder="Comma-separate your list of tags, the more the better!" onChange={e => setTags(e.target.value)} />
         </div>
         <button type="submit">Create Recipe!</button>
       </form>
+      {redirect}
     </div>
+
   )
 }

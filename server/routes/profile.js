@@ -20,19 +20,11 @@ const bcrypt = require('bcrypt')
 router.post("/addFav", (req, res) => {
     console.log("👻")
     db.User.findByIdAndUpdate(req.body.userId,
-        {$push: { favRecipes: req.body.recipeId }},
-        {safe: true, upsert: true}
+        {$addToSet: { favRecipes: req.body.recipeId }},
+        {safe: true}
     )
     .then((updated)=>res.send(updated))
     .catch(err=>res.send({ message: 'Error in adding favRecipe to user', err}));
-})
-
-router.post("/addRecipe", (req, res) => {
-    db.User.findByIdAndUpdate(req.body.userId,
-        {$push: { userRecipes: req.body.recipeId }},
-        {safe: true, upsert: true}
-    )
-    .catch(err=>res.send({ message: 'Error in adding userRecipe to user', err}));
 })
 
 

@@ -12,20 +12,22 @@ export default function Profile(props) {
 
     useEffect(() => {
         console.log("🤙 about to make axios call")
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/authors/${props.user._id}`)
-        .then(response => {
-            if (response.data.message) {
-                setError(response.data.message);
-                console.log("💥", response.data.err);
-            } else {
-                console.log("response.data:", response.data)
-                setUserRecipes(response.data.userRecipes);
-                setUserFaves(response.data.favRecipes);
-            }
-        }).catch(err => {
-            setError(err);
-            console.log(err);
-        });
+        if (props.user) {
+            axios.get(`${process.env.REACT_APP_SERVER_URL}/authors/${props.user._id}`)
+            .then(response => {
+                if (response.data.message) {
+                    setError(response.data.message);
+                    console.log("💥", response.data.err);
+                } else {
+                    console.log("response.data:", response.data)
+                    setUserRecipes(response.data.userRecipes);
+                    setUserFaves(response.data.favRecipes);
+                }
+            }).catch(err => {
+                setError(err);
+                console.log(err);
+            });
+        }
     }, []);
 
     if (!props.user) {

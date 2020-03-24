@@ -17,12 +17,8 @@ export default function ShowRecipe(props) {
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_SERVER_URL}/recipes/${id}`)
         .then(response => {
-            if (response.data.message) {
-                setError(response.data.message);
-                console.log(response.data.err);
-            } else {
-                setRecipe(response.data);
-            }
+            console.log("👹");
+            setRecipe(response.data);
         })
         .catch(err=> {
             console.log(err);
@@ -42,7 +38,7 @@ export default function ShowRecipe(props) {
             <h5>{recipe.ingredients}</h5>
             <img src={recipe.image} alt={recipe.alt} />
 
-            {props.user ? <FavoriteButton recipeId={recipe._id} user={props.user} /> : <Link to="/auth/signup">Sign up to favorite</Link>}
+            {props.user ? <FavoriteButton recipeId={id} user={props.user} /> : <Link to="/auth/signup">Sign up to favorite</Link>}
 
             <EditDelRecipeBtn user={props.user} recipeId={recipe._id} authorId={recipe.userId}/>
 
