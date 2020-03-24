@@ -288,8 +288,9 @@ label {
 
 .form-title {
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: bolder;
+  text-transform: uppercase;
 
 }
 
