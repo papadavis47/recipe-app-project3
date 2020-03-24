@@ -278,3 +278,36 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
+label {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.form-title {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 36px;
+  font-weight: bolder;
+
+}
+
+.form-background {
+  background-color: wheat;
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 2px solid blanchedalmond;
+}
+
+.form-button {
+
+  background: blanchedAlmond;
+  color: black;
+  border-style: outset;
+  border-color: bisque;
+  height: 50px;
+  width: 100px;
+  font: Georgia, 'Times New Roman', Times, serif;
+  text-shadow:none;
+  
+  }
