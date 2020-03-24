@@ -11,7 +11,7 @@ export default function ShowRecipe(props) {
     const { id } = useParams();
     const [recipe, setRecipe] = useState("");
     const [error, setError] = useState(null);
-    const [author, setAuthor]= useState('');
+//     const [author, setAuthor]= useState('');
 
     let recipeStyle = {
         backgroundImage: 'url(' + recipe.image + ')'
@@ -20,27 +20,31 @@ export default function ShowRecipe(props) {
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_SERVER_URL}/recipes/${id}`)
         .then(response => {
-            if (response.data.message) {
-                setError(response.data.message);
-                console.log(response.data.err);
-            } else {
-                setRecipe(response.data);
-                console.log("RECIPE:", response.data);
-                // get the author'sname
-                axios.get(`${process.env.REACT_APP_SERVER_URL}/authors/${response.data.userId}`)
-                .then(res2 => {
-                    if (res2.data.message) {
-                        setError(res2.data.message);
-                        console.log("💥", res2.data.err);
-                    } else {
-                        console.log("res2.data:", res2.data)
-                        setAuthor(res2.data);
-                    }
-        }).catch(err => {
-            setError(err);
-            console.log(err);
-        });
-            }
+            console.log("👹");
+            setRecipe(response.data);
+// =======
+//             if (response.data.message) {
+//                 setError(response.data.message);
+//                 console.log(response.data.err);
+//             } else {
+//                 setRecipe(response.data);
+//                 console.log("RECIPE:", response.data);
+//                 // get the author'sname
+//                 axios.get(`${process.env.REACT_APP_SERVER_URL}/authors/${response.data.userId}`)
+//                 .then(res2 => {
+//                     if (res2.data.message) {
+//                         setError(res2.data.message);
+//                         console.log("💥", res2.data.err);
+//                     } else {
+//                         console.log("res2.data:", res2.data)
+//                         setAuthor(res2.data);
+//                     }
+//         }).catch(err => {
+//             setError(err);
+//             console.log(err);
+//         });
+//             }
+// >>>>>>> master
         })
         .catch(err=> {
             console.log(err);
@@ -56,9 +60,13 @@ export default function ShowRecipe(props) {
         return (<li className="recipe-ing" key={ingred + index}>{ingred}</li>)
     })
 
+
+            {props.user ? <FavoriteButton recipeId={id} user={props.user} /> : <Link to="/auth/signup">Sign up to favorite</Link>}
+
     let directions = !recipe? "" : recipe.directions.map((step, index) => {
         return (<li className="recipe-step" key={step + index}>{index + 1}. {step}</li>)
     })
+
 
     let tagList = !recipe? "" : recipe.tags.map((tag, index) => {
         return (<p className="recipe-tag" key={tag + index}>{tag}</p>)

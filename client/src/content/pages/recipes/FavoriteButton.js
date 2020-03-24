@@ -5,25 +5,41 @@ export default function FavoriteButton(props) {
     let [favorite, setFavorite] = useState("");
     let [error, setError] = useState(null);
 
+    // useEffect(() => {
+    //     if (props.user) {
+    //         axios.get(`${process.env.REACT_APP_SERVER_URL}/authors/${props.user._id}`)
+    //         .then(response => {
+    //             console.log("💩💩")
+    //             if (response.data.message) {
+    //                 setError(response.data.message);
+    //                 console.log("💥", response.data.err);
+    //             } else {
+    //                 console.log("response.data:", response.data)
+    //                 setFavorite(props.recipeId);
+    //                 response.data.favRecipes.forEach(recipe => {
+    //                     console.log("🤠")
+    //                     console.log(recipe._id)
+    //                     // console.log(recipe)
+    //                     console.log("😈")
+    //                     console.log(props.recipeId)
+    //                     // console.log(props)
+    //                     if (recipe._id === props.recipeId) {
+    //                         setFavorite("");
+    //                     }
+    //                 })
+    //             }
+    //         }).catch(err => {
+    //             setError(err);
+    //             console.log(err);
+    //         })
+    //     }
+    // }, []);
+
     useEffect(() => {
-        if (props.user) {
-            axios.get(`${process.env.REACT_APP_SERVER_URL}/authors/${props.user._id}`)
-            .then(response => {
-                if (response.data.message) {
-                    setError(response.data.message);
-                    console.log("💥", response.data.err);
-                } else {
-                    console.log("response.data:", response.data)
-                    if (response.data.favRecipes.includes(props.recipeId)) {
-                        setFavorite(props.recipeId);
-                    }
-                }
-            }).catch(err => {
-                setError(err);
-                console.log(err);
-            })
-        }
-    }, []);
+        let checkFave = props.user.favRecipes.find(recipe => recipe === props.recipeId)
+        console.log(checkFave + "👾")
+        setFavorite(checkFave ? true : false);
+    })
 
     let handleSubmit = () => {
         console.log("😿")
@@ -32,9 +48,8 @@ export default function FavoriteButton(props) {
             userId: props.user._id
         })
         .then(response => {
-            console.log("👾")
-            console.log(response);
             setFavorite(props.recipeId);
+            <p>Added to favorites!</p>
         }).catch(err => {
             console.log("🎃")
             console.log(err);
@@ -42,7 +57,9 @@ export default function FavoriteButton(props) {
     }
 
     // let favoriteButton = !favorite ? <button onClick={handleSubmit}>Add to Favorites</button> : <p>Recipe in Favorites!</p>;
-
-    return !favorite ? <button onClick={handleSubmit}>Add to Favorites</button> : <p>Recipe in Favorites!</p>;
+    return (
+        !favorite ? <button onClick={handleSubmit}>Add to Favorites</button> : <p>Recipe in Favorites!</p>
+        //!favorite ? 
+    )
 }
 

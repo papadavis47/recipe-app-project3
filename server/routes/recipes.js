@@ -1,6 +1,9 @@
 const express = require("express");
+const cors = require("cors");
 const router = express.Router();
 const db = require("../models/index");
+
+router.use(cors());
 
 router.get("/", (req, res) => {
     let searchParams = req.query.tags ? 
@@ -9,8 +12,9 @@ router.get("/", (req, res) => {
 
     //console.log( searchParams )
     db.Recipe.find( searchParams )
+    .populate("userId", "name")
     .then(recipes => {
-        //console.log(recipes)
+        console.log(recipes)
         res.send(recipes)
     }).catch(err=>res.send({ message: "Error in getting all recipes", err }));
 });
@@ -27,19 +31,13 @@ router.get("/:id", (req, res) => {
 })
 
 router.post("/", (req, res) => {
-    // console.log(req.body)
-    // Remove any keys that have no value
-
-//     req.body.tags = req.body.tags.split(',').map(tag=>tag.toLowerCase().trim());
-//     req.body.directions = req.body.directions.split(',').map(direction=>direction.trim());
-//     req.body.ingredients = req.body.ingredients.split(',').map(ingredient=>ingredient.toLowerCase().trim());
-
-    // let newRecipe = Object.keys(req.body).forEach((key) => (req.body[key] == '') && delete req.body[key]);
+    
     let newRecipe = req.body;
+    newRecipe.servings = parseInt(req.body.servings)
     newRecipe.tags = req.body.tags.split(',').map(tag=>tag.toLowerCase().trim());
     newRecipe.directions = req.body.directions.split(',').map(direction=>direction.trim());
     newRecipe.ingredients = req.body.ingredients.split(',').map(ingredient=>ingredient.toLowerCase().trim());
-
+    
     //need to pass user to new recipes (here or front end???)
     console.log(newRecipe);
     db.Recipe.create({
@@ -51,12 +49,18 @@ router.post("/", (req, res) => {
         description: newRecipe.description,
         directions: newRecipe.directions,
         ingredients: newRecipe.ingredients,
-        date: newRecipe.date,
         tags: newRecipe.tags
     })
     .then(recipe => {
         console.log(req.body);
-        res.send(recipe);
+        db.User.findByIdAndUpdate(req.body.userId,
+            {$push: { userRecipes: recipe._id }},
+            {safe: true, upsert: true}
+        )
+        .then((recipe)=>res.send(recipe))
+        .catch(err=>res.send({ message: 'Error in adding favRecipe to user', err}));
+        
+        // res.send(recipe);
     })
     .catch(err=>res.send({ message: 'Error in creating one recipe', err}));
 })
